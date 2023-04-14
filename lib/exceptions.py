@@ -15,6 +15,10 @@ def exceptions(func):
         try:
             print('WRAPPER FUNCTION EXECUTED, TRYING TO EXECUTE CONTROLLER')
             return func(*args, **kwargs)
+        except (User.DoesNotExist, PermissionDenied) as e:
+            print(e.__class__.__name__)
+            print(e)
+            return Response({ 'detail': 'Unauthorized' }, status.HTTP_401_UNAUTHORIZED)
         except (ValidationError, ImproperlyConfigured) as e:
             print(e.__class__.__name__)
             print(e)
