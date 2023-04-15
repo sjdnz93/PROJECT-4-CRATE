@@ -21,6 +21,8 @@ class RecordListView(APIView):
         serialized_records = RecordSerializer(records, many=True)
         return Response(serialized_records.data)
     
+    #POST NEW RECORD
+    #endpoint: /api/records/
     @exceptions
     def post(self, request):
         print('POST RECORD ROUTE HIT')
@@ -38,7 +40,6 @@ class RecordDetailView(APIView):
     
     #GET A SPECIFIC RECORD
     #endpoint: /api/records/:id
-
     @exceptions
     def get(self, request, id):
         print('GET SINGLE RECORD WORKING')    
@@ -46,3 +47,11 @@ class RecordDetailView(APIView):
         record = Record.objects.get(id=id)
         serialized_record = RecordSerializer(record)
         return Response(serialized_record.data)
+    
+    #DELETE RECORD
+    #endpoint: /api/records/:id
+
+    def delete(self, request, id):
+        record = Record.objects.get(id=id)
+        record.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
