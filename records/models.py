@@ -4,7 +4,7 @@ from django.core.validators import URLValidator
 # Create your models here.
 
 class Record(models.Model):
-    album = models.CharField(max_length=50)
+    album = models.CharField(max_length=50, unique=True)
     artist = models.CharField(max_length=50)
     genre = models.CharField(max_length=50)
     release_year = models.CharField()

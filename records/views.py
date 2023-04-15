@@ -21,6 +21,15 @@ class RecordListView(APIView):
         serialized_records = RecordSerializer(records, many=True)
         return Response(serialized_records.data)
     
+    @exceptions
+    def post(self, request):
+        print('POST RECORD ROUTE HIT')
+        print('REQUEST DATA =>', request.data)
+        record = RecordSerializer(data=request.data)
+        record.is_valid(raise_exception=True)
+        record.save()
+        return Response(record.data, status.HTTP_201_CREATED)
+    
 
 
 
