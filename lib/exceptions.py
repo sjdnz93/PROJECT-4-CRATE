@@ -19,6 +19,10 @@ def exceptions(func):
             print(e.__class__.__name__)
             print(e)
             return Response({ 'detail': 'Unauthorized' }, status.HTTP_401_UNAUTHORIZED)
+        except NotFound as e:
+            print(e.__class__.__name__)
+            print(e)
+            return Response(e.__dict__ if e.__dict__ else { 'detail': str(e) }, status.HTTP_404_NOT_FOUND)
         except (ValidationError, ImproperlyConfigured) as e:
             print(e.__class__.__name__)
             print(e)
