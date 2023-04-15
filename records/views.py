@@ -48,9 +48,20 @@ class RecordDetailView(APIView):
         serialized_record = RecordSerializer(record)
         return Response(serialized_record.data)
     
+    #UPDATE RECORD
+    #endpoint: /api/records/:id
+    def put(self, request, id):
+        record = Record.objects.get(id=id)
+        serialized_record = RecordSerializer(record, request.data, partial=True)
+        serialized_record.is_valid(raise_exception=True)
+        serialized_record.save()
+        return Response(serialized_record.data)
+
+    
     #DELETE RECORD
     #endpoint: /api/records/:id
 
+    @exceptions
     def delete(self, request, id):
         record = Record.objects.get(id=id)
         record.delete()
