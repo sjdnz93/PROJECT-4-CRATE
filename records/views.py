@@ -50,6 +50,7 @@ class RecordDetailView(APIView):
     
     #UPDATE RECORD
     #endpoint: /api/records/:id
+    @exceptions
     def put(self, request, id):
         record = Record.objects.get(id=id)
         serialized_record = RecordSerializer(record, request.data, partial=True)
