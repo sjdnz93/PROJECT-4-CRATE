@@ -70,10 +70,8 @@ class ProfileView(APIView):
         serialized_user = PopulatedUserSerializer(user)
         return Response(serialized_user.data)
     
-
-class AddRecordToCollectionView(APIView):
+class RecordCollectionView(APIView):
     
-
     @exceptions
     def put(self, request, id1, id2):
         
@@ -102,11 +100,25 @@ class AddRecordToCollectionView(APIView):
         final.is_valid(raise_exception=True)
         final.save()
 
+        wishlist = UserWishlist(user)
+
+        wl_update = wishlist.data
+
+        print('WISHLIST =>', wl_update)
+
+        if to_add['id'] in wl_update['wishlist']:
+            wl_update['wishlist'].remove(to_add['id'])
+            fin_wl_update = UserWishlist(user, wl_update, partial=True)
+            fin_wl_update.is_valid(raise_exception=True)
+            fin_wl_update.save()
+
         return Response(final.data)
-    
-class AddRecordToWishlistView(APIView):
+
     
 
+
+class RecordWishlistView(APIView):
+    
     @exceptions
     def put(self, request, id1, id2):
         
@@ -123,17 +135,32 @@ class AddRecordToWishlistView(APIView):
         #Serialize User instance and save to variable
         serialized_user = UserWishlist(user)
 
+        collection = UserCollection(user)
+        to_check = collection.data
+
         #Save User data to variable
         to_update = serialized_user.data
 
-        #Append the Record ID to the User Collection
-        to_update['wishlist'].append(to_add['id'])
 
-        #Update/Validate/Save and return User with updated collection field
-        final = UserWishlist(user, to_update, partial=True)
+        #Check to see if record to be added to wishlist is not already in collection
+        if not to_add['id'] in to_check['collection']:
+            #Append the Record ID to the User Collection
+            to_update['wishlist'].append(to_add['id'])
 
-        final.is_valid(raise_exception=True)
-        final.save()
+            #Update/Validate/Save and return User with updated collection field
+            final = UserWishlist(user, to_update, partial=True)
 
-        return Response(final.data)    
+            final.is_valid(raise_exception=True)
+            final.save()
+            return Response(final.data)
+        
+        else:
+            return Response({ 'message': 'Record is already in your collection.' })
+
+
+
+
+
+
+            
     
