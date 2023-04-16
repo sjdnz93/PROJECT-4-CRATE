@@ -1,0 +1,49 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$o2aoULhMBw5D8AhdKMVEH4$YaBaVIIhtbjCPFeT7JTxGHvhDS540e2MCvsGag0uipI=",
+    "last_login": "2023-04-15T12:00:53Z",
+    "is_superuser": true,
+    "username": "simon",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-04-14T15:31:37Z",
+    "email": "simon@email.com",
+    "profile_image": "",
+    "groups": [],
+    "user_permissions": [],
+    "collection": [
+      1,
+      2,
+      3,
+      12
+    ],
+    "wishlist": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$d1IoKFg7wE0QZpGQTnZw6z$Oq93TWMkXWfFhwPBsjP/l/qf5pn2K5GFywGRKF2VYb8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "test1",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-15T15:18:13.412Z",
+    "email": "test1",
+    "profile_image": "",
+    "groups": [],
+    "user_permissions": [],
+    "collection": [],
+    "wishlist": []
+  }
+}
+]

@@ -1,0 +1,222 @@
+[
+{
+  "model": "records.record",
+  "pk": 1,
+  "fields": {
+    "album": "Blood Sugar Sex Magik",
+    "artist": "Red Hot Chili Peppers",
+    "genre": "Alternative Rock",
+    "release_year": "1991",
+    "album_art": "https://www.clashmusic.com/wp-content/uploads/2016/09/BSSM.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 2,
+  "fields": {
+    "album": "To Record Only Water For Ten Days",
+    "artist": "John Frusciante",
+    "genre": "Alternative",
+    "release_year": "2001",
+    "album_art": "https://magnetmagazine.com/wp-content/uploads/2021/02/JF.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 3,
+  "fields": {
+    "album": "Where the Light Is: John Mayer Live in Los Angeles",
+    "artist": "John Mayer",
+    "genre": "Blues Rock",
+    "release_year": "2007",
+    "album_art": "https://m.media-amazon.com/images/I/81lfMW3-N0L._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 4,
+  "fields": {
+    "album": "The College Dropout",
+    "artist": "Kanye West",
+    "genre": "Hip Hop",
+    "release_year": "2004",
+    "album_art": "https://m.media-amazon.com/images/I/71a0zG-Uj1L._AC_SL1024_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 5,
+  "fields": {
+    "album": "Back in Black",
+    "artist": "AC/DC",
+    "genre": "Hard Rock",
+    "release_year": "1980",
+    "album_art": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/ACDC_Back_in_Black_cover.svg/1200px-ACDC_Back_in_Black_cover.svg.png"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 6,
+  "fields": {
+    "album": "Born to Run",
+    "artist": "Bruce Springsteen",
+    "genre": "Rock",
+    "release_year": "1975",
+    "album_art": "https://m.media-amazon.com/images/I/8127ICDt45L._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 7,
+  "fields": {
+    "album": "Illmatic",
+    "artist": "Nas",
+    "genre": "Hip Hop",
+    "release_year": "1994",
+    "album_art": "https://m.media-amazon.com/images/I/A1Uv+OPV22S._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 8,
+  "fields": {
+    "album": "Rumours",
+    "artist": "Fleetwood Mac",
+    "genre": "Pop Rock",
+    "release_year": "1977",
+    "album_art": "https://m.media-amazon.com/images/I/71BekDJBb3L._AC_SL1425_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 9,
+  "fields": {
+    "album": "Dirt",
+    "artist": "Alice in Chains",
+    "genre": "Grunge",
+    "release_year": "1992",
+    "album_art": "https://m.media-amazon.com/images/I/81g0YcT68pL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 10,
+  "fields": {
+    "album": "The Velvet Underground & Nico",
+    "artist": "The Velvet Underground",
+    "genre": "Experimental Rock",
+    "release_year": "1967",
+    "album_art": "https://m.media-amazon.com/images/I/71H2+Sj3wmL._AC_SL1287_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 11,
+  "fields": {
+    "album": "Exile on Main St.",
+    "artist": "The Rolling Stones",
+    "genre": "Rock",
+    "release_year": "1972",
+    "album_art": "https://images.theconversation.com/files/460907/original/file-20220503-26-ht6k4a.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 12,
+  "fields": {
+    "album": "Led Zeppelin IV",
+    "artist": "Led Zeppelin",
+    "genre": "Hard Rock",
+    "release_year": "1971",
+    "album_art": "https://m.media-amazon.com/images/I/81evsr3Oq0L._AC_SL1425_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 13,
+  "fields": {
+    "album": "Hunky Dory",
+    "artist": "David Bowie",
+    "genre": "Rock",
+    "release_year": "1971",
+    "album_art": "https://www.thisisdig.com/wp-content/uploads/2020/09/Hunky-Dory-FC.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 14,
+  "fields": {
+    "album": "I Want to See Pulaski at Night",
+    "artist": "Andrew Bird",
+    "genre": "Indie folk",
+    "release_year": "2013",
+    "album_art": "https://is2-ssl.mzstatic.com/image/thumb/Music114/v4/ad/aa/34/adaa3487-9bdb-9349-7e43-6413b3da6b03/cover.jpg/1200x1200bf-60.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 15,
+  "fields": {
+    "album": "Surrealistic Pillow",
+    "artist": "Jefferson Airplane",
+    "genre": "Psychedelic rock",
+    "release_year": "1967",
+    "album_art": "https://m.media-amazon.com/images/I/81bDIXu8p7L._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 16,
+  "fields": {
+    "album": "All Things Must Pass",
+    "artist": "George Harrison",
+    "genre": "Rock",
+    "release_year": "1970",
+    "album_art": "https://www.normanrecords.com/artwork/large/6/187756-george-harrison-all-things-must-pass.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 17,
+  "fields": {
+    "album": "Pet Sounds",
+    "artist": "The Beach Boys",
+    "genre": "Baroque pop",
+    "release_year": "1966",
+    "album_art": "https://i.redd.it/ppjmhw5o5du61.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 18,
+  "fields": {
+    "album": "A Night at the Opera",
+    "artist": "Queen",
+    "genre": "Rock",
+    "release_year": "1975",
+    "album_art": "https://m.media-amazon.com/images/I/71eu02SZK1L._AC_SL1058_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 19,
+  "fields": {
+    "album": "The Chronic",
+    "artist": "Dr. Dre",
+    "genre": "Hip hop",
+    "release_year": "1992",
+    "album_art": "https://m.media-amazon.com/images/I/71mlUmU1TVL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 20,
+  "fields": {
+    "album": "Revolver",
+    "artist": "The Beatles",
+    "genre": "Rock",
+    "release_year": "1966",
+    "album_art": "https://m.media-amazon.com/images/I/91ffeWzPNpL._AC_SL1500_.jpg"
+  }
+}
+]

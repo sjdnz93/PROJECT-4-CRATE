@@ -70,7 +70,7 @@ class ProfileView(APIView):
         serialized_user = PopulatedUserSerializer(user)
         return Response(serialized_user.data)
     
-class RecordCollectionView(APIView):
+class AddRecordToCollectionView(APIView):
     
     @exceptions
     def put(self, request, id1, id2):
@@ -114,10 +114,10 @@ class RecordCollectionView(APIView):
 
         return Response(final.data)
 
-    
 
 
-class RecordWishlistView(APIView):
+
+class AddRecordToWishlistView(APIView):
     
     @exceptions
     def put(self, request, id1, id2):
