@@ -37,3 +37,8 @@ class UserCollection(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('collection',)      
+
+class UserWishlist(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('wishlist',)              

@@ -10,7 +10,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
 from django.conf import settings
 
-from .serializers.common import UserSerializer, UserCollection
+from .serializers.common import UserSerializer, UserCollection, UserWishlist
 from .serializers.populated import PopulatedUserSerializer
 
 from records.models import Record
@@ -103,4 +103,37 @@ class AddRecordToCollectionView(APIView):
         final.save()
 
         return Response(final.data)
+    
+class AddRecordToWishlistView(APIView):
+    
+
+    @exceptions
+    def put(self, request, id1, id2):
+        
+        #Retrieve both the user profile and the record
+        user = User.objects.get(id=id1)
+        record = Record.objects.get(id=id2)
+        
+        #Serialize record instance and save to variable
+        serialized_record = RecordSerializer(record)
+
+        #Save record data to variable
+        to_add = serialized_record.data
+
+        #Serialize User instance and save to variable
+        serialized_user = UserWishlist(user)
+
+        #Save User data to variable
+        to_update = serialized_user.data
+
+        #Append the Record ID to the User Collection
+        to_update['wishlist'].append(to_add['id'])
+
+        #Update/Validate/Save and return User with updated collection field
+        final = UserWishlist(user, to_update, partial=True)
+
+        final.is_valid(raise_exception=True)
+        final.save()
+
+        return Response(final.data)    
     
