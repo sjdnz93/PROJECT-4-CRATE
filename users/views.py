@@ -217,7 +217,7 @@ class FollowUser(APIView):
       if not id2 in info['following']:
         info['following'].append(id2)
         print('UPDATED INFO', info)
-        final = UserFollowing(user1, info)
+        final = UserFollowing(user1, info, partial=True)
         final.is_valid(raise_exception=True)
         final.save()
         return Response(final.data)
@@ -225,13 +225,25 @@ class FollowUser(APIView):
       else:
           return Response({ 'message': 'You are already following this user.' }) 
 
-
-
-      
-        
-
-
-
-
-            
+class UnfollowUser(APIView):
     
+    @exceptions
+    def put(self, request, id1, id2):
+        print('UNFOLLOW ROUTE HIT')
+
+        user = User.objects.get(id=id1)
+
+        serialized_user = UserFollowing(user)
+
+        info = serialized_user.data
+
+        print('USER FOLLOWING =>', info['following'])
+
+        if id2 in info['following']:
+            info['following'].remove(id2)
+            final = UserFollowing(user, info, partial=True)
+            final.is_valid(raise_exception=True)
+            final.save()
+            return Response(final.data)
+        else:
+            return Response({ 'message': 'You have to follow a user before you unfollow them.' })
