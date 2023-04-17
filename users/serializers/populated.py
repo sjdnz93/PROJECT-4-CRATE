@@ -6,5 +6,5 @@ class PopulatedUserSerializer(UserSerializer):
     collection = RecordSerializer(many=True)
     wishlist = RecordSerializer(many=True)
     following = UserSerializer(many=True)
-    reviews = ReviewSerializer(many=True)
+    reviews = ReviewSerializer(many=True, default=0)
 
