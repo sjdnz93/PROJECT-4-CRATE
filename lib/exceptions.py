@@ -5,6 +5,7 @@ from django.core.exceptions import ImproperlyConfigured
 from rest_framework import status
 
 from records.models import Record
+from reviews.models import Review
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -21,7 +22,7 @@ def exceptions(func):
             print(e.__class__.__name__)
             print(e)
             return Response({ 'detail': 'Unauthorized' }, status.HTTP_401_UNAUTHORIZED)
-        except (NotFound, Record.DoesNotExist) as e:
+        except (NotFound, Record.DoesNotExist, Review.DoesNotExist) as e:
             print(e.__class__.__name__)
             print(e)
             return Response(e.__dict__ if e.__dict__ else { 'detail': str(e) }, status.HTTP_404_NOT_FOUND)
