@@ -10,7 +10,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
 from django.conf import settings
 
-from .serializers.common import UserSerializer, UserCollection, UserWishlist, UserFollowing
+from .serializers.common import UserSerializer, UserCollection, UserWishlist, UserFollowing, UserInfo
 from .serializers.populated import PopulatedUserSerializer
 
 from records.models import Record
@@ -67,6 +67,14 @@ class ProfileView(APIView):
         print('USER ID =>', id)
         user = User.objects.get(id=id)
         serialized_user = PopulatedUserSerializer(user)
+        return Response(serialized_user.data)
+    
+    @exceptions
+    def put(self, request, id):
+        user = User.objects.get(id=id)
+        serialized_user = UserInfo(user, request.data, partial=True)
+        serialized_user.is_valid(raise_exception=True)
+        serialized_user.save()
         return Response(serialized_user.data)
     
 class AddRecordToCollectionView(APIView):

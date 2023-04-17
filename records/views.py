@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .serializers.common import RecordSerializer
+from .serializers.populated import PopulatedRecordSerializer
 from .models import Record
 
 from lib.exceptions import exceptions
@@ -45,7 +46,7 @@ class RecordDetailView(APIView):
         print('GET SINGLE RECORD WORKING')    
 
         record = Record.objects.get(id=id)
-        serialized_record = RecordSerializer(record)
+        serialized_record = PopulatedRecordSerializer(record)
         return Response(serialized_record.data)
     
     #UPDATE RECORD
