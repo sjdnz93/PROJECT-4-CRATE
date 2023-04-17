@@ -34,7 +34,6 @@ class RegisterView(APIView):
         new_user.save()
         return Response(new_user.data, status.HTTP_201_CREATED)
     
-
 class LoginView(APIView):
     
     #Login Route
@@ -114,9 +113,6 @@ class AddRecordToCollectionView(APIView):
 
         return Response(final.data)
 
-
-
-
 class AddRecordToWishlistView(APIView):
     
     @exceptions
@@ -157,7 +153,51 @@ class AddRecordToWishlistView(APIView):
         else:
             return Response({ 'message': 'Record is already in your collection.' })
 
+class RemoveRecordFromCollection(APIView):
+    
+    @exceptions
+    def put(self, request, id1, id2):
+        print('DELETE RECORD FROM COLLECTION ROUTE')
 
+        user = User.objects.get(id=id1)
+        
+        serialized_user = UserCollection(user)
+
+        print('SERIALIZED USER =>', serialized_user.data['collection'])
+
+        if id2 in serialized_user.data['collection']:
+            serialized_user.data['collection'].remove(id2)
+            final = UserCollection(user, serialized_user.data, partial=True)
+            final.is_valid(raise_exception=True)
+            final.save()
+            return Response(final.data)
+        
+        else: 
+            return Response({ 'message': 'This record cannot be deleted because it is not in your collection.'})
+        
+class RemoveRecordFromWishlist(APIView):
+    
+    def put(self, request, id1, id2):
+        print('DELETE RECORD FROM WISHLIST ROUTE')
+
+        user = User.objects.get(id=id1)
+        
+        serialized_user = UserWishlist(user)
+
+        print('SERIALIZED USER =>', serialized_user.data['wishlist'])
+
+        if id2 in serialized_user.data['wishlist']:
+            serialized_user.data['wishlist'].remove(id2)
+            final = UserWishlist(user, serialized_user.data, partial=True)
+            final.is_valid(raise_exception=True)
+            final.save()
+            return Response(final.data)
+        
+        else: 
+            return Response({ 'message': 'This record cannot be deleted because it is not in your wishlist.'})
+
+
+        
 
 
 
