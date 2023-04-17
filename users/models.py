@@ -9,3 +9,4 @@ class User(AbstractUser):
     profile_image = models.URLField(validators=[URLValidator()], blank=True)
     collection = models.ManyToManyField('records.Record', related_name='record_collection', blank=True)
     wishlist = models.ManyToManyField('records.Record', related_name='record_wishlist', blank=True)
+    following = models.ManyToManyField('users.User', related_name='follow_id', blank=True)

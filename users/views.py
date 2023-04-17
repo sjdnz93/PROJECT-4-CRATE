@@ -10,7 +10,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
 from django.conf import settings
 
-from .serializers.common import UserSerializer, UserCollection, UserWishlist
+from .serializers.common import UserSerializer, UserCollection, UserWishlist, UserFollowing
 from .serializers.populated import PopulatedUserSerializer
 
 from records.models import Record
@@ -177,6 +177,7 @@ class RemoveRecordFromCollection(APIView):
         
 class RemoveRecordFromWishlist(APIView):
     
+    @exceptions
     def put(self, request, id1, id2):
         print('DELETE RECORD FROM WISHLIST ROUTE')
 
@@ -196,7 +197,37 @@ class RemoveRecordFromWishlist(APIView):
         else: 
             return Response({ 'message': 'This record cannot be deleted because it is not in your wishlist.'})
 
+class FollowUser(APIView):
 
+  @exceptions
+  def put(self, request, id1, id2):
+      print('FOLLOW USER ROUTE HIT')
+      
+      print(id2)
+      
+      user1 = User.objects.get(id=id1)
+
+      serialized_user = UserFollowing(user1)
+
+      print('USER INFO =>', serialized_user.data)
+
+      info = serialized_user.data
+      print('INFO VARIABLE', info)
+
+      if not id2 in info['following']:
+        info['following'].append(id2)
+        print('UPDATED INFO', info)
+        final = UserFollowing(user1, info)
+        final.is_valid(raise_exception=True)
+        final.save()
+        return Response(final.data)
+      
+      else:
+          return Response({ 'message': 'You are already following this user.' }) 
+
+
+
+      
         
 
 
