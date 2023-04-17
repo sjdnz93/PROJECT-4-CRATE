@@ -218,5 +218,425 @@
     "release_year": "1966",
     "album_art": "https://m.media-amazon.com/images/I/91ffeWzPNpL._AC_SL1500_.jpg"
   }
+},
+{
+  "model": "records.record",
+  "pk": 21,
+  "fields": {
+    "album": "Blonde",
+    "artist": "Frank Ocean",
+    "genre": "R&B",
+    "release_year": "2016",
+    "album_art": "https://images.squarespace-cdn.com/content/v1/5e40c67d62402c0ce36a6bf0/1603566903470-375SZI5GD0F53P2LPGXR/Ef1eZcOX0AEmSs_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 22,
+  "fields": {
+    "album": "In Rainbows",
+    "artist": "Radiohead",
+    "genre": "Alternative Rock",
+    "release_year": "2007",
+    "album_art": "https://m.media-amazon.com/images/I/A1MwaIeBpwL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 23,
+  "fields": {
+    "album": "Getz/Gilberto",
+    "artist": "Stan Getz and João Gilberto",
+    "genre": "Bossa Nova",
+    "release_year": "1964",
+    "album_art": "https://m.media-amazon.com/images/I/71TpdKxIFOL._AC_SL1400_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 24,
+  "fields": {
+    "album": "Loveless",
+    "artist": "My Bloody Valentine",
+    "genre": "Shoegaze",
+    "release_year": "1991",
+    "album_art": "https://m.media-amazon.com/images/I/71RoGMpXr-L._AC_SL1425_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 25,
+  "fields": {
+    "album": "The Miseducation of Lauryn Hill",
+    "artist": "Lauryn Hill",
+    "genre": "R&B, Neo Soul",
+    "release_year": "1998",
+    "album_art": "https://m.media-amazon.com/images/I/91RwRgo+-gL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 26,
+  "fields": {
+    "album": "Jagged Little Pill",
+    "artist": "Alanis Morissette",
+    "genre": "Alternative Rock, Pop Rock",
+    "release_year": "1995",
+    "album_art": "https://m.media-amazon.com/images/I/81UsU658UVL._AC_SL1425_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 27,
+  "fields": {
+    "album": "Siamese Dream",
+    "artist": "The Smashing Pumpkins",
+    "genre": "Alternative Rock",
+    "release_year": "1993",
+    "album_art": "https://static.onecms.io/wp-content/uploads/sites/6/2018/02/siamese-dream.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 28,
+  "fields": {
+    "album": "Electric Ladyland",
+    "artist": "The Jimi Hendrix Experience",
+    "genre": "Blues Rock, Psychedelic Rock",
+    "release_year": "1968",
+    "album_art": "https://m.media-amazon.com/images/I/81BY1RNu7oL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 29,
+  "fields": {
+    "album": "Trench",
+    "artist": "Twenty One Pilots",
+    "genre": "Alternative",
+    "release_year": "2018",
+    "album_art": "https://m.media-amazon.com/images/I/A1V174FXOkL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 30,
+  "fields": {
+    "album": "After Hours",
+    "artist": "The Weeknd",
+    "genre": "R&B",
+    "release_year": "2020",
+    "album_art": "https://m.media-amazon.com/images/I/813XseYNw1L._AC_SL1414_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 31,
+  "fields": {
+    "album": "good kid, m.A.A.d city",
+    "artist": "Kendrick Lamar",
+    "genre": "Hip hop",
+    "release_year": "2012",
+    "album_art": "https://m.media-amazon.com/images/I/81EYtj8oi3L._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 32,
+  "fields": {
+    "album": "Funk Wav Bounces Vol. 1",
+    "artist": "Calvin Harris",
+    "genre": "Funk, R&B, Nu-disco",
+    "release_year": "2017",
+    "album_art": "https://m.media-amazon.com/images/I/91aaSfAibgL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 33,
+  "fields": {
+    "album": "Blackout",
+    "artist": "Britney Spears",
+    "genre": "Pop",
+    "release_year": "2007",
+    "album_art": "https://m.media-amazon.com/images/I/81F5DUexi-L._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 34,
+  "fields": {
+    "album": "For Emma, Forever Ago",
+    "artist": "Bon Iver",
+    "genre": "Folk",
+    "release_year": "2007",
+    "album_art": "https://images-eu.ssl-images-amazon.com/images/I/518ywjXFavL._AC_UL750_SR750,750_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 35,
+  "fields": {
+    "album": "Only by the Night",
+    "artist": "Kings of Leon",
+    "genre": "Alternative Rock",
+    "release_year": "2008",
+    "album_art": "https://m.media-amazon.com/images/I/71XMOHlbNrL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 36,
+  "fields": {
+    "album": "808s & Heartbreak",
+    "artist": "Kanye West",
+    "genre": "Hip Hop",
+    "release_year": "2008",
+    "album_art": "https://images.genius.com/c50a2def216359e7c33793592225370b.1000x1000x1.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 37,
+  "fields": {
+    "album": "The Fame",
+    "artist": "Lady Gaga",
+    "genre": "Pop",
+    "release_year": "2008",
+    "album_art": "https://m.media-amazon.com/images/I/71w5Vqk383L._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 38,
+  "fields": {
+    "album": "Viva la Vida or Death and All His Friends",
+    "artist": "Coldplay",
+    "genre": "Alternative Rock",
+    "release_year": "2008",
+    "album_art": "https://m.media-amazon.com/images/I/9145yafeO2L._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 39,
+  "fields": {
+    "album": "Fleet Foxes",
+    "artist": "Fleet Foxes",
+    "genre": "Folk",
+    "release_year": "2008",
+    "album_art": "https://m.media-amazon.com/images/I/81Sw6YOnS9L._AC_SL1200_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 40,
+  "fields": {
+    "album": "Hail to the Thief",
+    "artist": "Radiohead",
+    "genre": "Alternative Rock",
+    "release_year": "2003",
+    "album_art": "https://static.wikia.nocookie.net/radiohead/images/1/13/Hail_to_the_thief_cover.jpg/revision/latest/scale-to-width-down/1200?cb=20181023003049"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 41,
+  "fields": {
+    "album": "Yankee Hotel Foxtrot",
+    "artist": "Wilco",
+    "genre": "Alternative Rock",
+    "release_year": "2002",
+    "album_art": "https://m.media-amazon.com/images/I/71-J4jMNfCL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 42,
+  "fields": {
+    "album": "The Eminem Show",
+    "artist": "Eminem",
+    "genre": "Hip Hop",
+    "release_year": "2002",
+    "album_art": "https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/yk78t4k6b0mglgy8hv4t/eminem?fimg-ssr-default"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 43,
+  "fields": {
+    "album": "Kid A",
+    "artist": "Radiohead",
+    "genre": "Electronic",
+    "release_year": "2000",
+    "album_art": "https://static.wikia.nocookie.net/radiohead/images/b/bb/Kid_a.jpg/revision/latest?cb=20181023002949"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 44,
+  "fields": {
+    "album": "All Hail West Texas",
+    "artist": "The Mountain Goats",
+    "genre": "Indie Folk",
+    "release_year": "2002",
+    "album_art": "https://m.media-amazon.com/images/I/51xa0QpYmlL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 45,
+  "fields": {
+    "album": "Elephant",
+    "artist": "The White Stripes",
+    "genre": "Garage Rock",
+    "release_year": "2003",
+    "album_art": "https://spinningdiscssheffield.co.uk/wp-content/uploads/2023/03/ELEPHANT.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 46,
+  "fields": {
+    "album": "Stankonia",
+    "artist": "OutKast",
+    "genre": "Hip Hop",
+    "release_year": "2000",
+    "album_art": "https://m.media-amazon.com/images/I/81NfayQcQgL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 47,
+  "fields": {
+    "album": "My Beautiful Dark Twisted Fantasy",
+    "artist": "Kanye West",
+    "genre": "Hip hop",
+    "release_year": "2010",
+    "album_art": "https://m.media-amazon.com/images/I/71EYmWxcmdL._AC_SL1400_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 48,
+  "fields": {
+    "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
+    "artist": "David Bowie",
+    "genre": "Glam rock",
+    "release_year": "1972",
+    "album_art": "https://m.media-amazon.com/images/I/81eVnOh4UJL._AC_SL1300_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 49,
+  "fields": {
+    "album": "Appetite for Destruction",
+    "artist": "Guns N' Roses",
+    "genre": "Hard rock",
+    "release_year": "1987",
+    "album_art": "https://m.media-amazon.com/images/I/71H9ZR6EGFL._AC_SL1400_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 50,
+  "fields": {
+    "album": "Hounds of Love",
+    "artist": "Kate Bush",
+    "genre": "Art pop",
+    "release_year": "1985",
+    "album_art": "https://m.media-amazon.com/images/I/71eDl4OeBrL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 51,
+  "fields": {
+    "album": "The Bends",
+    "artist": "Radiohead",
+    "genre": "Alternative rock",
+    "release_year": "1995",
+    "album_art": "https://m.media-amazon.com/images/I/71VJAU9IPSL._AC_SL1200_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 52,
+  "fields": {
+    "album": "The Blueprint",
+    "artist": "Jay-Z",
+    "genre": "Hip hop",
+    "release_year": "2001",
+    "album_art": "https://images.genius.com/1aebfd816914351eb7010bd441822da8.1000x1000x1.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 53,
+  "fields": {
+    "album": "Bad",
+    "artist": "Michael Jackson",
+    "genre": "Pop",
+    "release_year": "1987",
+    "album_art": "https://m.media-amazon.com/images/I/71ulNeyjxNL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 54,
+  "fields": {
+    "album": "The Reminder",
+    "artist": "Feist",
+    "genre": "Indie Rock",
+    "release_year": "2007",
+    "album_art": "https://m.media-amazon.com/images/I/71IDLzlnbsL._AC_SL1400_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 55,
+  "fields": {
+    "album": "Merry Christmas",
+    "artist": "Mariah Carey",
+    "genre": "Christmas",
+    "release_year": "1994",
+    "album_art": "https://pbs.twimg.com/media/FgF9v_zXoAI7tns.jpg:large"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 56,
+  "fields": {
+    "album": "Blood Visions",
+    "artist": "Jay Reatard",
+    "genre": "Garage Punk",
+    "release_year": "2006",
+    "album_art": "https://cdn.shopify.com/s/files/1/0677/1323/7296/products/0767981120317.jpg?v=1677044426&width=1200"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 57,
+  "fields": {
+    "album": "At Folsom Prison",
+    "artist": "Johnny Cash",
+    "genre": "Country",
+    "release_year": "1968",
+    "album_art": "https://m.media-amazon.com/images/I/91lZb7TxCCL._AC_SL1500_.jpg"
+  }
+},
+{
+  "model": "records.record",
+  "pk": 58,
+  "fields": {
+    "album": "1989",
+    "artist": "Taylor Swift",
+    "genre": "Pop",
+    "release_year": "2014",
+    "album_art": "https://static.wikia.nocookie.net/taylor-swift/images/0/0e/Taylor_Swift_1989.JPG/revision/latest?cb=20160423132917"
+  }
 }
+
+
 ]
