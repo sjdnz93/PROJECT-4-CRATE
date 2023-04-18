@@ -7,6 +7,9 @@ import axios from 'axios'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Profile from './components/user/Profile'
+import NavBar from './components/nav/NavBar'
+import SearchMusic from './components/user/SearchMusic'
+import AddRecord from './components/user/AddRecord'
 
 const App = () => {
   useEffect(() => {
@@ -21,10 +24,13 @@ const App = () => {
 
     <div className='site-wrapper'>
       <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path='/' element={<Register />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/search-music' element={<SearchMusic />}></Route>
+          <Route path='/add-record' element={<AddRecord />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
