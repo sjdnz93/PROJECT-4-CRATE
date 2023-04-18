@@ -32,6 +32,7 @@ const App = () => {
           <Route path='/search-music' element={<SearchMusic />}></Route>
           <Route path='/add-record' element={<AddRecord />}></Route>
         </Routes>
+        <footer><small>Crate was created by Simon Davis</small></footer>
       </BrowserRouter>
     </div>
 

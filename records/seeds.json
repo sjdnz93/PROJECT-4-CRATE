@@ -636,6 +636,17 @@
     "release_year": "2014",
     "album_art": "https://static.wikia.nocookie.net/taylor-swift/images/0/0e/Taylor_Swift_1989.JPG/revision/latest?cb=20160423132917"
   }
+},
+{
+  "model": "records.record",
+  "pk": 59,
+  "fields": {
+    "album": "V",
+    "artist": "Unknown Mortal Orchestra",
+    "genre": "Alternative Rock",
+    "release_year": "2023",
+    "album_art": "https://media.pitchfork.com/photos/63dbd140fbd83f873333224b/master/w_1280%2Cc_limit/Unknown-Mortal-Orchestra-V.jpg"
+  }
 }
 
 

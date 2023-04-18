@@ -27,7 +27,7 @@ const Register = () => {
   const [error, setError] = useState('')
 
   //! Executions
-  
+
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
 
@@ -53,14 +53,16 @@ const Register = () => {
 
           <Col xs={12} sm={12} md={6} lg={6}>
             <Row>
-              <h1 className='display-4 text-center'>CRATE</h1>
-              <p className='text-center'>Catalogue your collection. Find new music. Get digging.</p>
+              <Col>
+                <h1 className='display-4 text-center'>CRATE</h1>
+                <p className='text-center'>Catalogue your collection. Find new music. Get digging.</p>
+              </Col>
             </Row>
 
             <Row>
               <Col as='form' onSubmit={handleSubmit}>
 
-                <h2>Register</h2>
+                <h2>Album Info</h2>
 
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" placeholder='Username' onChange={handleChange} value={formFields.username} />
