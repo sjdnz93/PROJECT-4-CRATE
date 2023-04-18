@@ -1,44 +1,43 @@
+//! React 
 import { useState } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import humps from 'humps'
+import axios from 'axios'
 
-// Bootstrap
+//! Bootstrap
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
-const Register = () => {
+
+const Login = () => {
 
   const navigate = useNavigate()
 
-  //! STATE
-
-  const [formFields, setFormFields] = useState({
-    username: '',
+  //! State
+  const [ formFields, setFormFields ] = useState({
     email: '',
     password: '',
-    passwordConfirmation: '',
-    reviews: [],
   })
 
-  const [error, setError] = useState('')
+  const [ error, setError ] = useState('')
 
   //! Executions
-  
+
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
-
-  }
+    setError('')
+  } 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     try {
-      const vals = humps.decamelizeKeys(formFields)
-      await axios.post('/api/profile/register/', vals)
-      navigate('/login')
+      const { data } = await axios.post('/api/profile/login/', formFields)
+      localStorage.setItem('CRATE-TOKEN', data.token)
+      console.log('DATA TOKEN', data.token)
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
+      navigate('/profile')
+
     } catch (err) {
       console.log('error', err)
       setError(err.response.data.message)
@@ -60,10 +59,7 @@ const Register = () => {
             <Row>
               <Col as='form' onSubmit={handleSubmit}>
 
-                <h2>Register</h2>
-
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" placeholder='Username' onChange={handleChange} value={formFields.username} />
+                <h2>Login</h2>
 
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" placeholder='Email' onChange={handleChange} value={formFields.email} />
@@ -71,20 +67,15 @@ const Register = () => {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" placeholder='Password' onChange={handleChange} value={formFields.password} />
 
-                <label htmlFor="passwordConfirmation">Password Confirmation</label>
-                <input type="password" name="passwordConfirmation" placeholder='Password Confirmation' onChange={handleChange} value={formFields.passwordConfirmation} />
-
                 <div className='btnCenter'>
-                  <button className='btn mb-4'>Register</button>
+                  <button className='btn mb-4'>Login</button>
                 </div>
 
                 {error && <p className='text-danger text-center'>{error}</p>}
 
               </Col>
               
-
             </Row>
-
 
           </Col>
         </Row>
@@ -93,8 +84,6 @@ const Register = () => {
       </Container>
     </main>
   )
-
-
 }
 
-export default Register
+export default Login
