@@ -22,12 +22,7 @@
   },
   "rules": {
     "brace-style": "error",
-    "camelcase": [
-      "error",
-      {
-        "properties": "never"
-      }
-    ],
+    "camelcase": "off",
     "func-call-spacing": [
       "error",
       "never"

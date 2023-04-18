@@ -5,10 +5,13 @@ const tokenName = 'CRATE-TOKEN'
 
 export const getPayload = () => {
   const token = localStorage.getItem(tokenName)
+  console.log('TOKEN', token)
   if (!token) return
   const splitToken = token.split('.')
   const payLoadString = splitToken[1]
-  return JSON.parse(Buffer.from(payLoadString, 'base64'))
+  console.log('PAYLOAD', JSON.parse(Buffer.from(payLoadString, 'base64')))
+  const value = JSON.parse(Buffer.from(payLoadString, 'base64'))
+  return value
 }
 
 export const isAuthenticated = () => {
@@ -45,4 +48,10 @@ export const userIsOwner = (record) => {
   if (record && record.owner) {
     return payload.sub === record.owner.id
   }
+}
+
+export const getPayloadSub = () => {
+  const payload = getPayload()
+  if (!payload) return
+  return payload.sub
 }

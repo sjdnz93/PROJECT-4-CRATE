@@ -62,7 +62,7 @@ const Register = () => {
             <Row>
               <Col as='form' onSubmit={handleSubmit}>
 
-                <h2>Album Info</h2>
+                <h2>Register</h2>
 
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" placeholder='Username' onChange={handleChange} value={formFields.username} />

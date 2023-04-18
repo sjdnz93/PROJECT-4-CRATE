@@ -10,6 +10,7 @@ import Profile from './components/user/Profile'
 import NavBar from './components/nav/NavBar'
 import SearchMusic from './components/user/SearchMusic'
 import AddRecord from './components/user/AddRecord'
+import RecordPage from './components/records/RecordPage'
 
 const App = () => {
   useEffect(() => {
@@ -31,8 +32,9 @@ const App = () => {
           <Route path='/profile' element={<Profile />}></Route>
           <Route path='/search-music' element={<SearchMusic />}></Route>
           <Route path='/add-record' element={<AddRecord />}></Route>
+          <Route path='/record/:recordId' element={<RecordPage />}></Route>
         </Routes>
-        <footer><small>Crate was created by Simon Davis</small></footer>
+        <footer className='text-center'><small>Crate was created by Simon Davis</small></footer>
       </BrowserRouter>
     </div>
 
