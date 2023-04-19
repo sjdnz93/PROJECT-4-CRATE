@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Card } from 'react-bootstrap'
 import { Carousel } from 'react-bootstrap'
 
 
@@ -67,7 +68,7 @@ const Profile = () => {
               </>
             </Row>
             <h4>Following:</h4>
-            <Row className='friend-slider'>
+            <Row className='content-slider'>
               {profile.following && profile.following.length > 0 ? (
                 profile.following.map(item => {
                   const { profile_image, username, id } = item
@@ -80,8 +81,25 @@ const Profile = () => {
                   )
                 })
               ) : (
-                <h2>No followers</h2>
+                <p>This user isn&apos;t following anyone</p>
               )}
+            </Row>
+            <h4>Your record collection:</h4>
+            <Row className='content-slider'>
+              {profile.collection && profile.collection.length > 0 ?
+                profile.collection.map(record => {
+                  const { id, album_art, album } = record
+                  return (
+                    <Col key={id}>
+                      <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                    </Col>
+                  )
+                })
+                :
+                <>
+                  <p>No records in collection</p>
+                </>
+              }
             </Row>
 
 

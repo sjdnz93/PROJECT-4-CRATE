@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+main {
+  height: calc(100vh - 104.344px);
+  overflow-y: scroll;
+}
+
 .card-image {
   height: 180px;
   background-size: cover;
@@ -11,7 +16,7 @@
 
 }
 
-.friend-slider {
+.content-slider {
   overflow-x: scroll;
   flex-wrap: nowrap;
 }
