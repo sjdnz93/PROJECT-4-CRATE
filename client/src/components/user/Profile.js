@@ -66,23 +66,19 @@ const Profile = () => {
                 {profile.collection ? <p>Records in crate: {profile.collection.length}</p> : <p>Records in crate: 0</p>}
               </>
             </Row>
-
-            <Row>
-              <h3>Following:</h3>
+            <h4>Following:</h4>
+            <Row className='friend-slider'>
               {profile.following && profile.following.length > 0 ? (
-                <Carousel variant="dark">
-                  {profile.following.map((item) => (
-                    <Carousel.Item key={item.id}>
-                      <div className="card-image" style={{ backgroundColor: 'white' }}></div>
-                      <Carousel.Caption>
-                        <img src={item.profile_image} height="50px"></img>
-                        <h2>
-                          <Link to={`/profile/${item.id}`}>{item.username}</Link>
-                        </h2>
-                      </Carousel.Caption>
-                    </Carousel.Item>
-                  ))}
-                </Carousel>
+                profile.following.map(item => {
+                  const { profile_image, username, id } = item
+                  return (
+                    <Col key={id}>
+                      <img src={profile_image} height='100'></img>
+                      <h4><Link to={`/profile/${id}`}>{username}</Link></h4>
+
+                    </Col>
+                  )
+                })
               ) : (
                 <h2>No followers</h2>
               )}
@@ -97,3 +93,17 @@ const Profile = () => {
 }
 
 export default Profile
+
+{/* <Carousel variant="dark">
+{profile.following.map((item) => (
+  <Carousel.Item key={item.id}>
+    <div className="card-image" style={{ backgroundColor: 'white' }}></div>
+    <Carousel.Caption>
+      <img src={item.profile_image} height="50px"></img>
+      <h2>
+        <Link to={`/profile/${item.id}`}>{item.username}</Link>
+      </h2>
+    </Carousel.Caption>
+  </Carousel.Item>
+))}
+</Carousel> */}
