@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -36,7 +36,7 @@ const RecordPage = () => {
     getRecord()
   }, [])
 
-  
+
 
   useEffect(() => {
     const getUser = async () => {
@@ -99,30 +99,42 @@ const RecordPage = () => {
                 <p>Insert avg. rating</p>
                 <button onClick={addToCollection}>Add record to your collection</button>
                 <button onClick={addToWishlist}>Add record to your wishlist</button>
-                <button>Submit album review</button>
+                <Link to={`/add-review/${recordId}/${sub}`}>Submit album review</Link>
               </Col>
             </Row>
 
+            <Row>
+              <h2>REVIEWS</h2>
+              {record.reviews ?
+                record.reviews.map(review => {
+                  const { id, review_text, rating, owner } = review
+                  if (review) {
+                    return (
+                      <div key={id}>
+                        <p><Link to={`/profile/${owner.id}`}>{owner.username}</Link></p>
+                        <p>{review_text}</p>
+                        <p>{rating}</p>
+                      </div>
+                    )
+                  } else {
+                    return (
+                      <div key={0}>
+                        <p>No reviews for this album. Click the link to add one.</p>
+                      </div>
+                    )
+                  }
 
+                })
+                :
+                <>
+                  <h2>REVIEWS</h2>
+                  <p>No reviews for this album. Click the link to add one.</p>
+                </>
+              }
+            </Row>
           </Col>
-
-
-
-
-
-
-
-
-
-
-
         </Row>
-
-
-
       </Container>
-
-
     </main >
   )
 }

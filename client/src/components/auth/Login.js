@@ -8,10 +8,14 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+import { getPayloadSub } from '../helpers/Auth'
+
 
 const Login = () => {
 
   const navigate = useNavigate()
+
+  
 
   //! State
   const [ formFields, setFormFields ] = useState({
@@ -36,7 +40,8 @@ const Login = () => {
       localStorage.setItem('CRATE-TOKEN', data.token)
       console.log('DATA TOKEN', data.token)
       axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
-      navigate('/profile')
+      const sub = getPayloadSub()
+      navigate(`/profile/${sub}`)
 
     } catch (err) {
       console.log('error', err)

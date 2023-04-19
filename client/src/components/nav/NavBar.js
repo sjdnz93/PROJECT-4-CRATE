@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import { isAuthenticated, removeToken } from '../helpers/Auth'
+import { isAuthenticated, removeToken, getPayloadSub } from '../helpers/Auth'
 
 import logo from '../../images/logos/high-res.png'
 
@@ -15,6 +15,7 @@ import logo from '../../images/logos/high-res.png'
 
 const NavBar = () => {
 
+  const sub = getPayloadSub()
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -27,7 +28,7 @@ const NavBar = () => {
 
     <Navbar bg='light' expand='lg'>
       <Container>
-        <Navbar.Brand href={isAuthenticated() ? '/profile' : '/'}>
+        <Navbar.Brand href={isAuthenticated() ? `/profile/${sub}` : '/'}>
           <img
             alt='Crate logo'
             src={logo}
@@ -44,7 +45,7 @@ const NavBar = () => {
               </>
               :
               <>
-                <Nav.Link to='/profile' as={Link}>Your Crate</Nav.Link>
+                <Nav.Link to={`/profile/${sub}`} as={Link}>Your Crate</Nav.Link>
                 <Nav.Link to='/search-music' as={Link}>Search Music</Nav.Link>
                 <Nav.Link to='/add-record' as={Link}>Add Record</Nav.Link>
                 <span className='nav-link' onClick={handleLogOut}>Sign Out</span>
