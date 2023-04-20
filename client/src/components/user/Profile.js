@@ -88,6 +88,9 @@ const Profile = () => {
     if (master.includes(otherId) === true) {
       try {
         await axios.put(`/api/profile/${sub}/unfollow/${profile.id}/`)
+        const { data } = await axios.get(`/api/profile/${sub}`)
+        console.log('LOGGED USER DATA', data)
+        setLoggedUser(data)
         e.target.innerText = 'Follow'
       } catch (err) {
         console.log(err)
@@ -96,6 +99,9 @@ const Profile = () => {
     } else  {
       try {
         await axios.put(`/api/profile/${sub}/follow/${profile.id}/`)
+        const { data } = await axios.get(`/api/profile/${sub}`)
+        console.log('LOGGED USER DATA', data)
+        setLoggedUser(data)
         e.target.innerText = 'Unfollow'
         console.log('FOLLLWOING')
       } catch (err) {
