@@ -8,11 +8,17 @@ import Col from 'react-bootstrap/Col'
 
 import Error from '../error/Error'
 
+import { getPayloadSub } from '../helpers/Auth'
+
 const Profile = () => {
 
   const { id } = useParams()
 
+  const sub = getPayloadSub()
+
   const [profile, setProfile] = useState({})
+
+  const [loggedUser, setLoggedUser] = useState({})
 
   const [error, setError] = useState('')
 
@@ -33,6 +39,20 @@ const Profile = () => {
 
   }, [id])
 
+  useEffect(() => {
+    const getLoggedUser = async () => {
+      try {
+        const { data } = await axios.get(`/api/profile/${sub}`)
+        console.log('LOGGED USER DATA', data)
+        setLoggedUser(data)
+      } catch (err) {
+        console.log(err)
+        setError(err.message)
+      }
+    }
+    getLoggedUser()
+  }, [])
+
 
 
   const toggleRecordView = (e) => {
@@ -45,6 +65,44 @@ const Profile = () => {
     }
     console.log('RECORD VIEW', recordView)
     console.log(e.target)
+  }
+
+  const followUnfollow = async (e) => {
+    console.log(profile.id)
+    console.log(sub)
+    console.log('Logged user', loggedUser.following)
+    console.log('condition', Object.values(profile)[0])
+    const otherId = Object.values(profile)[0]
+
+    const master = []
+
+    loggedUser.following.forEach(item => {
+      console.log('vals', Object.values(item)[0]) 
+      master.push(Object.values(item)[0]) 
+    })
+
+    console.log('FILTERED', master)
+
+
+
+    if (master.includes(otherId) === true) {
+      try {
+        await axios.put(`/api/profile/${sub}/unfollow/${profile.id}/`)
+        e.target.innerText = 'Follow'
+      } catch (err) {
+        console.log(err)
+        setError(err.message)
+      }
+    } else  {
+      try {
+        await axios.put(`/api/profile/${sub}/follow/${profile.id}/`)
+        e.target.innerText = 'Unfollow'
+        console.log('FOLLLWOING')
+      } catch (err) {
+        console.log(err)
+        setError(err.message)
+      }
+    }
   }
 
 
@@ -63,6 +121,7 @@ const Profile = () => {
                 {profile.favourite_album ? <p>Favourite album: {profile.favourite_album}</p> : <p>Favourite album: not selected yet</p>}
                 {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
                 <button onClick={toggleRecordView}>Show wishlist</button>
+                <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : ''}>Follow this user</button>
                 <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
               </>
             </Row>
