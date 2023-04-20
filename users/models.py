@@ -6,7 +6,7 @@ from django.core.validators import URLValidator
 
 class User(AbstractUser):
     email = models.CharField(max_length=50)
-    profile_image = models.URLField(validators=[URLValidator()], blank=True)
+    profile_image = models.URLField(validators=[URLValidator()], default='https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-default-male-avatar-png-image_2811083.jpg')
     favourite_album = models.CharField(max_length=100, blank=True)
     favourite_genre = models.CharField(max_length=100, blank=True)
     collection = models.ManyToManyField('records.Record', related_name='record_collection', blank=True)

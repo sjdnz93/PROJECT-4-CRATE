@@ -47,6 +47,7 @@ const NavBar = () => {
               <>
                 <Nav.Link to={`/profile/${sub}`} as={Link}>Your Crate</Nav.Link>
                 <Nav.Link to='/search-music' as={Link}>Search Music</Nav.Link>
+                <Nav.Link to='/search-users' as={Link}>Search Users</Nav.Link>
                 <Nav.Link to='/add-record' as={Link}>Add Record</Nav.Link>
                 <span className='nav-link' onClick={handleLogOut}>Sign Out</span>
               </>

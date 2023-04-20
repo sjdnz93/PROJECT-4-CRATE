@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RegisterView, LoginView, ProfileView, AddRecordToCollectionView, AddRecordToWishlistView, RemoveRecordFromCollection, RemoveRecordFromWishlist, FollowUser, UnfollowUser
+from .views import RegisterView, LoginView, ProfileView, AddRecordToCollectionView, AddRecordToWishlistView, RemoveRecordFromCollection, RemoveRecordFromWishlist, FollowUser, UnfollowUser, AllProfiles
 
 urlpatterns = [
     path('register/', RegisterView.as_view()),
@@ -10,5 +10,6 @@ urlpatterns = [
     path('<int:id1>/delete-collection/<int:id2>/', RemoveRecordFromCollection.as_view()),
     path('<int:id1>/delete-wishlist/<int:id2>/', RemoveRecordFromWishlist.as_view()),
     path('<int:id1>/follow/<int:id2>/', FollowUser.as_view()),
-    path('<int:id1>/unfollow/<int:id2>/', UnfollowUser.as_view())
+    path('<int:id1>/unfollow/<int:id2>/', UnfollowUser.as_view()),
+    path('', AllProfiles.as_view())
 ]

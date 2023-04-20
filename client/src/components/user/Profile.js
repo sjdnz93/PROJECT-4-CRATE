@@ -5,12 +5,8 @@ import { useParams, Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Card } from 'react-bootstrap'
-import { Carousel } from 'react-bootstrap'
-
 
 import Error from '../error/Error'
-import CarouselItem from 'react-bootstrap/esm/CarouselItem'
 
 const Profile = () => {
 
@@ -84,7 +80,7 @@ const Profile = () => {
                   )
                 })
               ) : (
-                <p>This user isn&apos;t following anyone</p>
+                <p>Find users to follow <Link to={'/search-users'}>here</Link></p>
               )}
             </Row>
 

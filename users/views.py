@@ -77,6 +77,15 @@ class ProfileView(APIView):
         serialized_user.save()
         return Response(serialized_user.data)
     
+class AllProfiles(APIView):
+    
+    @exceptions
+    def get(self, request):
+        print('PROFILE ROUTE HIT')
+        user = User.objects.all()
+        serialized_user = UserInfo(user, many=True)
+        return Response(serialized_user.data)    
+    
 class AddRecordToCollectionView(APIView):
     
     @exceptions

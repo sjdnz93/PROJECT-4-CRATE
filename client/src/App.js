@@ -13,6 +13,7 @@ import AddRecord from './components/user/AddRecord'
 import RecordPage from './components/records/RecordPage'
 import AddReview from './components/user/AddReview'
 import EditProfile from './components/user/EditProfile'
+import SearchUsers from './components/user/SearchUsers'
 
 const App = () => {
   useEffect(() => {
@@ -34,6 +35,7 @@ const App = () => {
           <Route path='/profile/:id' element={<Profile />}></Route>
           <Route path='/profile/:id/edit' element={<EditProfile />}></Route>
           <Route path='/search-music' element={<SearchMusic />}></Route>
+          <Route path='/search-users' element={<SearchUsers />}></Route>
           <Route path='/add-record' element={<AddRecord />}></Route>
           <Route path='/record/:recordId' element={<RecordPage />}></Route>
           <Route path='/add-review/:recordId/:sub' element={<AddReview />}></Route>

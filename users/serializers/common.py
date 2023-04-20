@@ -51,7 +51,7 @@ class UserFollowing(serializers.ModelSerializer):
 class UserInfo(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'profile_image', 'favourite_album', 'favourite_genre')
+        fields = ('username', 'email', 'profile_image', 'favourite_album', 'favourite_genre', 'id', 'collection',)
 
 class Username(serializers.ModelSerializer):
     class Meta:
