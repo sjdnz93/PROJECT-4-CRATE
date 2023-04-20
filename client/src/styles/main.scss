@@ -20,3 +20,8 @@ main {
   overflow-x: scroll;
   flex-wrap: nowrap;
 }
+
+.content-slider-vert {
+  overflow-y: scroll;
+  max-height: calc(100vh - 110px);
+}

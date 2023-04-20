@@ -31,7 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'profile_image', 'wishlist', 'collection', 'password_confirmation', 'password', 'following', 'reviews')
+        fields = '__all__'
 
 class UserCollection(serializers.ModelSerializer):
     class Meta:
@@ -51,7 +51,7 @@ class UserFollowing(serializers.ModelSerializer):
 class UserInfo(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'profile_image')
+        fields = ('username', 'email', 'profile_image', 'favourite_album', 'favourite_genre')
 
 class Username(serializers.ModelSerializer):
     class Meta:

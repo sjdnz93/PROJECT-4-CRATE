@@ -33,38 +33,21 @@ const Profile = () => {
     }
     getProfile()
 
-  }, [])
-
-  useEffect(() => {
-    const getProfile = async () => {
-      try {
-        const { data } = await axios.get(`/api/profile/${id}`)
-        console.log('USER DATA', data)
-        setProfile(data)
-      } catch (err) {
-        console.log(err)
-        setError(err.message)
-      }
-    }
-    getProfile()
-
   }, [id])
-
-  // console.log('profile', profile)
-  // console.log(profile.username)
-  // console.log(profile.collection.length)
-  // console.log(profile.following[1].username)
 
   return (
     <main>
       <Container>
         <Row>
-          <Col>
+          <Col xs={12} sm={12} md={6} lg={6}>
             <Row>
               <>
-                <img src={profile.profile_image} alt="profile picture"></img>
+                {profile.profile_image ? <img src={profile.profile_image} alt="profile picture" className='profile-pic'></img> : <img src='https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-default-male-avatar-png-image_2811083.jpg' alt="profile picture" className='profile-pic'></img>}
                 <h2>{profile.username}</h2>
                 {profile.collection ? <p>Records in crate: {profile.collection.length}</p> : <p>Records in crate: 0</p>}
+                {profile.favourite_album ? <p>Favourite album: {profile.favourite_album}</p> : <p>Favourite album: not selected yet</p>}
+                {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
+                <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
               </>
             </Row>
             <h4>Following:</h4>
@@ -84,8 +67,9 @@ const Profile = () => {
                 <p>This user isn&apos;t following anyone</p>
               )}
             </Row>
-            <h4>Your record collection:</h4>
-            <Row className='content-slider'>
+            <h4 className='d-md-none'>Your record collection:</h4>
+            <Row className='content-slider d-md-none' xs={12} sm={12}>
+
               {profile.collection && profile.collection.length > 0 ?
                 profile.collection.map(record => {
                   const { id, album_art, album } = record
@@ -101,7 +85,26 @@ const Profile = () => {
                 </>
               }
             </Row>
+          </Col>
+          <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block'>
+            <h4>Your record collection:</h4>
+            <Row className='content-slider-vert'>
 
+              {profile.collection && profile.collection.length > 0 ?
+                profile.collection.map(record => {
+                  const { id, album_art, album } = record
+                  return (
+                    <Col key={id}>
+                      <Link to={`/record/${id}`}><img src={album_art} height='180px' width='180px'></img></Link>
+                    </Col>
+                  )
+                })
+                :
+                <>
+                  <p>No records in collection</p>
+                </>
+              }
+            </Row>
 
           </Col>
         </Row>
@@ -111,17 +114,3 @@ const Profile = () => {
 }
 
 export default Profile
-
-{/* <Carousel variant="dark">
-{profile.following.map((item) => (
-  <Carousel.Item key={item.id}>
-    <div className="card-image" style={{ backgroundColor: 'white' }}></div>
-    <Carousel.Caption>
-      <img src={item.profile_image} height="50px"></img>
-      <h2>
-        <Link to={`/profile/${item.id}`}>{item.username}</Link>
-      </h2>
-    </Carousel.Caption>
-  </Carousel.Item>
-))}
-</Carousel> */}
