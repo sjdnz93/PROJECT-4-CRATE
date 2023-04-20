@@ -20,6 +20,8 @@ const Profile = () => {
 
   const [error, setError] = useState('')
 
+  const [recordView, setRecordView] = useState(true)
+
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -35,7 +37,24 @@ const Profile = () => {
 
   }, [id])
 
+
+
+  const toggleRecordView = (e) => {
+    if (recordView) {
+      setRecordView(false)
+      e.target.innerText = 'Show collection'
+    } else {
+      setRecordView(true)
+      e.target.innerText = 'Show wishlist'
+    }
+    console.log('RECORD VIEW', recordView)
+    console.log(e.target)
+  }
+
+
   return (
+
+
     <main>
       <Container>
         <Row>
@@ -47,6 +66,7 @@ const Profile = () => {
                 {profile.collection ? <p>Records in crate: {profile.collection.length}</p> : <p>Records in crate: 0</p>}
                 {profile.favourite_album ? <p>Favourite album: {profile.favourite_album}</p> : <p>Favourite album: not selected yet</p>}
                 {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
+                <button onClick={toggleRecordView}>Show wishlist</button>
                 <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
               </>
             </Row>
@@ -67,42 +87,73 @@ const Profile = () => {
                 <p>This user isn&apos;t following anyone</p>
               )}
             </Row>
-            <h4 className='d-md-none'>Your record collection:</h4>
-            <Row className='content-slider d-md-none' xs={12} sm={12}>
 
-              {profile.collection && profile.collection.length > 0 ?
-                profile.collection.map(record => {
-                  const { id, album_art, album } = record
-                  return (
-                    <Col key={id}>
-                      <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
-                    </Col>
-                  )
-                })
+            {recordView ? <h4 className='d-md-none'>Your record collection:</h4> : <h4 className='d-md-none'>Your record wishlist:</h4>}
+            <Row className='content-slider d-md-none' xs={12} sm={12}>
+              {recordView ?
+                profile.collection && profile.collection.length > 0 ?
+                  profile.collection.map(record => {
+                    const { id, album_art, album } = record
+                    return (
+                      <Col key={id}>
+                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                      </Col>
+                    )
+                  })
+                  :
+                  <>
+                    <p>No records in collection</p>
+                  </>
+
                 :
-                <>
-                  <p>No records in collection</p>
-                </>
+                profile.wishlist && profile.wishlist.length > 0 ?
+                  profile.wishlist.map(record => {
+                    const { id, album_art, album } = record
+                    return (
+                      <Col key={id}>
+                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                      </Col>
+                    )
+                  })
+                  :
+                  <>
+                    <p>No records in wishlist</p>
+                  </>
               }
             </Row>
           </Col>
           <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block'>
-            <h4>Your record collection:</h4>
+            {recordView ? <h4>Your record collection:</h4> : <h4>Your record wishlist:</h4>}
             <Row className='content-slider-vert'>
+              {recordView ?
+                profile.collection && profile.collection.length > 0 ?
+                  profile.collection.map(record => {
+                    const { id, album_art, album } = record
+                    return (
+                      <Col key={id}>
+                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                      </Col>
+                    )
+                  })
+                  :
+                  <>
+                    <p>No records in collection</p>
+                  </>
 
-              {profile.collection && profile.collection.length > 0 ?
-                profile.collection.map(record => {
-                  const { id, album_art, album } = record
-                  return (
-                    <Col key={id}>
-                      <Link to={`/record/${id}`}><img src={album_art} height='180px' width='180px'></img></Link>
-                    </Col>
-                  )
-                })
                 :
-                <>
-                  <p>No records in collection</p>
-                </>
+                profile.wishlist && profile.wishlist.length > 0 ?
+                  profile.wishlist.map(record => {
+                    const { id, album_art, album } = record
+                    return (
+                      <Col key={id}>
+                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                      </Col>
+                    )
+                  })
+                  :
+                  <>
+                    <p>No records in wishlist</p>
+                  </>
               }
             </Row>
 
