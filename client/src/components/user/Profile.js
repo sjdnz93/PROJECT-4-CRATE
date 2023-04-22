@@ -24,6 +24,12 @@ const Profile = () => {
 
   const [recordView, setRecordView] = useState(true)
 
+  const [followButtonVal, setFollowButtonVal] = useState('Follow this user')
+
+  const [buttonUserData, setButtonUserData] = useState({})
+  const [buttonAccountData, setButtonAccountData] = useState({})
+
+
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -53,6 +59,52 @@ const Profile = () => {
     getLoggedUser()
   }, [])
 
+  useEffect(() => {
+    const buttonVal = async () => {
+
+      try {
+        const data1 = await axios.get(`/api/profile/${sub}`)
+        setButtonUserData(data1.data)
+        const data2 = await axios.get(`/api/profile/${id}`)
+        
+        setButtonAccountData(data2.data)
+
+        const user = data1.data
+        const account = data2.data
+        console.log('USER', user)
+        console.log('ACCOUNT', account)
+  
+        console.log('FUNCTION WORKING')
+        console.log(Object.values(account)[0])
+        console.log('loggedUserTest', user.following)
+  
+        const master = []
+  
+
+  
+        user.following.forEach(item => {
+          console.log('TEST VALS', Object.values(item)[0])
+          master.push(Object.values(item)[0])
+        })
+
+        if (master.includes(Object.values(account)[0])) {
+          setFollowButtonVal('Unfollow this user')
+          console.log('FOLLOW BUTTON VALUE', followButtonVal)
+        } else {
+          setFollowButtonVal('Follow this user')
+          console.log('FOLLOW BUTTON VALUE', followButtonVal)
+        }
+  
+        console.log('TEST MASTER', master)
+      } catch (err) {
+        console.log(err)
+        setError(err.message)
+      }
+
+
+    }
+    buttonVal()
+  }, [id])
 
 
   const toggleRecordView = (e) => {
@@ -77,13 +129,11 @@ const Profile = () => {
     const master = []
 
     loggedUser.following.forEach(item => {
-      console.log('vals', Object.values(item)[0]) 
-      master.push(Object.values(item)[0]) 
+      console.log('vals', Object.values(item)[0])
+      master.push(Object.values(item)[0])
     })
 
     console.log('FILTERED', master)
-
-
 
     if (master.includes(otherId) === true) {
       try {
@@ -91,18 +141,18 @@ const Profile = () => {
         const { data } = await axios.get(`/api/profile/${sub}`)
         console.log('LOGGED USER DATA', data)
         setLoggedUser(data)
-        e.target.innerText = 'Follow'
+        setFollowButtonVal('Follow this user')
       } catch (err) {
         console.log(err)
         setError(err.message)
       }
-    } else  {
+    } else {
       try {
         await axios.put(`/api/profile/${sub}/follow/${profile.id}/`)
         const { data } = await axios.get(`/api/profile/${sub}`)
         console.log('LOGGED USER DATA', data)
         setLoggedUser(data)
-        e.target.innerText = 'Unfollow'
+        setFollowButtonVal('Unfollow this user')
         console.log('FOLLLWOING')
       } catch (err) {
         console.log(err)
@@ -127,7 +177,7 @@ const Profile = () => {
                 {profile.favourite_album ? <p>Favourite album: {profile.favourite_album}</p> : <p>Favourite album: not selected yet</p>}
                 {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
                 <button onClick={toggleRecordView}>Show wishlist</button>
-                <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : ''}>Follow this user</button>
+                <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : ''}>{followButtonVal}</button>
                 <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
               </>
             </Row>

@@ -1,0 +1,37 @@
+@import './form.scss';
+
+.register-login-cont {
+  height: 100%;
+
+  .top-row {
+    height: 100%;
+
+    .left {
+      height: 100%;
+      text-align: center;
+
+      .img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        img {
+          max-height: 80%;
+          box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5), 0 6px 6px 0 rgba(0, 0, 0, 0.5);
+          border: solid 5px white;
+        }
+
+      }
+
+
+    }
+  }
+
+}
+
+.title-container {
+
+    margin: 15% 0 5% 0;
+
+}
