@@ -1,10 +1,10 @@
 @import './form.scss';
 
-.register-login-cont {
-  height: 100%;
+.primary-container {
+ 
 
   .top-row {
-    height: 100%;
+    
 
     .left {
       height: 100%;
@@ -33,5 +33,9 @@
 .title-container {
 
     margin: 15% 0 5% 0;
+
+    h1 { 
+      font-weight: 800;
+    }
 
 }

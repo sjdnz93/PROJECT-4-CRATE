@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap');
 @import './components/register.scss';
 @import './components/navbar.scss';
+@import './components/profile.scss';
 
 
 * {
@@ -16,6 +17,14 @@ main {
   background-position: center;
 }
 
+.primary-container {
+  height: 100%;
+
+  .top-row {
+    height: 100%;
+  }
+}
+
 .card-image {
   height: 180px;
   background-size: cover;
@@ -28,9 +37,37 @@ main {
 .content-slider {
   overflow-x: scroll;
   flex-wrap: nowrap;
+
+  .col {
+
+    img {
+      border: solid 2px white;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5), 0 6px 6px 0 rgba(0, 0, 0, 0.5);
+      margin-bottom: 5px;
+    }
+
+    h4 {
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+
+.content-slider::-webkit-scrollbar {
+  display: none;
 }
 
 .content-slider-vert {
   overflow-y: scroll;
   max-height: calc(100vh - 110px);
+}
+
+.content-slider-vert::-webkit-scrollbar {
+  display: none;
+}
+
+.buffer {
+  height: 20px;
 }

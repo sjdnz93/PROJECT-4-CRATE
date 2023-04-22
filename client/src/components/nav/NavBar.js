@@ -32,8 +32,7 @@ const NavBar = () => {
           <img
             alt='Crate logo'
             src={logo}
-            width='100'
-            className='d-inline-block align-top'
+            className='d-inline-block align-top logo'
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='crate-nav' />

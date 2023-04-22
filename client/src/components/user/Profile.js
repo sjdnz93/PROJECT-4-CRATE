@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 import Error from '../error/Error'
 
@@ -66,22 +67,22 @@ const Profile = () => {
         const data1 = await axios.get(`/api/profile/${sub}`)
         setButtonUserData(data1.data)
         const data2 = await axios.get(`/api/profile/${id}`)
-        
+
         setButtonAccountData(data2.data)
 
         const user = data1.data
         const account = data2.data
         console.log('USER', user)
         console.log('ACCOUNT', account)
-  
+
         console.log('FUNCTION WORKING')
         console.log(Object.values(account)[0])
         console.log('loggedUserTest', user.following)
-  
-        const master = []
-  
 
-  
+        const master = []
+
+
+
         user.following.forEach(item => {
           console.log('TEST VALS', Object.values(item)[0])
           master.push(Object.values(item)[0])
@@ -94,7 +95,7 @@ const Profile = () => {
           setFollowButtonVal('Follow this user')
           console.log('FOLLOW BUTTON VALUE', followButtonVal)
         }
-  
+
         console.log('TEST MASTER', master)
       } catch (err) {
         console.log(err)
@@ -166,74 +167,82 @@ const Profile = () => {
 
 
     <main>
-      <Container>
-        <Row>
-          <Col xs={12} sm={12} md={6} lg={6}>
-            <Row>
+      <Container className='primary-container'>
+        <Row className='top-row'>
+          <Col xs={12} sm={12} md={6} lg={6} className='left-col'>
+            <Row className='user-info'>
               <>
                 {profile.profile_image ? <img src={profile.profile_image} alt="profile picture" className='profile-pic'></img> : <img src='https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-default-male-avatar-png-image_2811083.jpg' alt="profile picture" className='profile-pic'></img>}
-                <h2>{profile.username}</h2>
-                {profile.collection ? <p>Records in crate: {profile.collection.length}</p> : <p>Records in crate: 0</p>}
-                {profile.favourite_album ? <p>Favourite album: {profile.favourite_album}</p> : <p>Favourite album: not selected yet</p>}
-                {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
-                <button onClick={toggleRecordView}>Show wishlist</button>
-                <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : ''}>{followButtonVal}</button>
-                <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
+                <div className='user-info'>
+                  <h2 className='username'>{profile.username}</h2>
+                  {profile.collection ? <p>Records in crate: {profile.collection.length}</p> : <p>Records in crate: 0</p>}
+                  {profile.favourite_album ? <p>Favourite album: {profile.favourite_album}</p> : <p>Favourite album: not selected yet</p>}
+                  {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
+                  <button className='toggle-button' onClick={toggleRecordView}>Show wishlist</button>
+                  <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : ''}>{followButtonVal}</button>
+                  <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
+                </div>
               </>
             </Row>
-            <h4>Following:</h4>
-            <Row className='content-slider'>
-              {profile.following && profile.following.length > 0 ? (
-                profile.following.map(item => {
-                  const { profile_image, username, id } = item
-                  return (
-                    <Col key={id}>
-                      <img src={profile_image} height='100'></img>
-                      <h4><Link to={`/profile/${id}`}>{username}</Link></h4>
-
-                    </Col>
-                  )
-                })
-              ) : (
-                <p>Find users to follow <Link to={'/search-users'}>here</Link></p>
-              )}
-            </Row>
-
-            {recordView ? <h4 className='d-md-none'>Your record collection:</h4> : <h4 className='d-md-none'>Your record wishlist:</h4>}
-            <Row className='content-slider d-md-none' xs={12} sm={12}>
-              {recordView ?
-                profile.collection && profile.collection.length > 0 ?
-                  profile.collection.map(record => {
-                    const { id, album_art, album } = record
+            <div className='following-collection-wrapper'>
+              <h4>Following:</h4>
+              <Row className='content-slider'>
+                {profile.following && profile.following.length > 0 ? (
+                  profile.following.map(item => {
+                    const { profile_image, username, id } = item
                     return (
                       <Col key={id}>
-                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                        <img src={profile_image} height='100'></img>
+                        <h4><Link to={`/profile/${id}`}>{username}</Link></h4>
+
                       </Col>
                     )
                   })
-                  :
-                  <>
-                    <p>No records in collection</p>
-                  </>
+                ) : (
+                  <p>Find users to follow <Link to={'/search-users'}>here</Link></p>
+                )}
+              </Row>
+            </div>
+            <div className='following-collection-wrapper d-md-none'>
+              {recordView ? <h4 className='d-md-none'>Your record collection:</h4> : <h4 className='d-md-none'>Your record wishlist:</h4>}
+              <Row className='content-slider d-md-none' xs={12} sm={12}>
+                {recordView ?
+                  profile.collection && profile.collection.length > 0 ?
+                    profile.collection.map(record => {
+                      const { id, album_art, album } = record
+                      return (
+                        <Col key={id}>
+                          <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                        </Col>
+                      )
+                    })
+                    :
+                    <>
+                      <p>No records in collection</p>
+                    </>
 
-                :
-                profile.wishlist && profile.wishlist.length > 0 ?
-                  profile.wishlist.map(record => {
-                    const { id, album_art, album } = record
-                    return (
-                      <Col key={id}>
-                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
-                      </Col>
-                    )
-                  })
                   :
-                  <>
-                    <p>No records in wishlist</p>
-                  </>
-              }
-            </Row>
+                  profile.wishlist && profile.wishlist.length > 0 ?
+                    profile.wishlist.map(record => {
+                      const { id, album_art, album } = record
+                      return (
+                        <Col key={id}>
+                          <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                        </Col>
+                      )
+                    })
+                    :
+                    <>
+                      <p>No records in wishlist</p>
+                    </>
+                }
+              </Row>
+              
+            </div>
+            <div className='buffer'></div>
           </Col>
-          <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block'>
+          
+          <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block right'>
             {recordView ? <h4>Your record collection:</h4> : <h4>Your record wishlist:</h4>}
             <Row className='content-slider-vert'>
               {recordView ?
@@ -241,8 +250,12 @@ const Profile = () => {
                   profile.collection.map(record => {
                     const { id, album_art, album } = record
                     return (
-                      <Col key={id}>
-                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                      <Col key={id} md={8} lg={4} className='album-container'>
+                        <Link to={`/record/${id}`}>
+                          <Card className='album-card'>
+                            <Card.Img variant='top' src={album_art}></Card.Img>
+                          </Card>
+                        </Link>
                       </Col>
                     )
                   })
@@ -256,8 +269,12 @@ const Profile = () => {
                   profile.wishlist.map(record => {
                     const { id, album_art, album } = record
                     return (
-                      <Col key={id}>
-                        <Link to={`/record/${id}`}><img src={album_art} height='100'></img></Link>
+                      <Col key={id} md={8} lg={4} className='album-container'>
+                        <Link to={`/record/${id}`}>
+                          <Card className='album-card'>
+                            <Card.Img variant='top' src={album_art}></Card.Img>
+                          </Card>
+                        </Link>
                       </Col>
                     )
                   })

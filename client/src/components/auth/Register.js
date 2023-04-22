@@ -50,7 +50,7 @@ const Register = () => {
 
   return (
     <main>
-      <Container className='register-login-cont'>
+      <Container className='primary-container'>
         <Row className='top-row'>
 
           <Col xs={0} sm={0} md={0} lg={6} className='d-none d-lg-block left'>
@@ -91,6 +91,9 @@ const Register = () => {
                   <Button variant='primary' type='submit' className='mb-3'>
                     Register
                   </Button>
+
+                  {error && <p className='text-danger text-center'>{error}</p>}
+
                 </div>
 
               </Form>

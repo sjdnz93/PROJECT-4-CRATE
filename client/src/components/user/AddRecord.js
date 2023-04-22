@@ -50,8 +50,8 @@ const AddRecord = () => {
 
   return (
     <main>
-      <Container>
-        <Row>
+      <Container className='primary-container'>
+        <Row className='top-row'>
 
           <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block'>
             <h1 className='display-4 text-center'>ADD RECORD</h1>
