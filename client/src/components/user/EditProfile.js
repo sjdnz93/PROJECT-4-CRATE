@@ -6,6 +6,10 @@ import axios from 'axios'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
+import hero from '../../images/hero-register.jpeg'
 
 
 const EditProfile = () => {
@@ -51,43 +55,51 @@ const EditProfile = () => {
 
   return (
     <main>
-      <Container>
-        <Row>
+      <Container className='primary-container'>
+        <Row className='top-row'>
 
-          <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block'>
-            <h1 className='display-4 text-center'>EDIT PROFILE</h1>
-            <p className='text-center'>Edit your CRATE profile information.</p>
+          <Col xs={0} sm={0} md={0} lg={6} className='d-none d-md-block left'>
+            {/* <h1 className='display-4 text-center'>EDIT PROFILE</h1>
+            <p className='text-center'>Edit your CRATE profile information.</p> */}
+            <div className='img-container'>
+              <img alt='record collection' src={hero}></img>
+            </div>
           </Col>
 
-          <Col xs={12} sm={12} md={6} lg={6}>
-            <Row>
+          <Col xs={12} sm={12} md={12} lg={6} className='right-review'>
+            {/* <Row>
               <Col xs={12} sm={12} className='d-md-none'>
                 <h1 className='display-4 text-center'>EDIT PROFILE</h1>
                 <p className='text-center'>Edit your CRATE profile information.</p>
               </Col>
-            </Row>
+            </Row> */}
 
-            <Row>
-              <Col as='form' onSubmit={handleSubmit}>
+            <Row className='edit-profile-container'>
 
-                <h2>PROFILE INFO</h2>
+              <Form onSubmit={handleSubmit} class-name='review-content'>
+                <div className='form-container'>
+                  <h2>EDIT PROFILE INFO</h2>
+                  <Form.Group className='mb-3'>
+                    <Form.Control type="text" name='profile_image' placeholder={info.profile_image} onChange={handleChange} value={formFields.profile_image} />
+                  </Form.Group>
 
-                <label htmlFor='profile_image'>Profile Image</label>
-                <input type='text' name='profile_image' placeholder={info.profile_image} onChange={handleChange} value={formFields.album} />
+                  <Form.Group className='mb-3'>
+                    <Form.Control type="text" name="favourite_album" placeholder={info.favourite_album} onChange={handleChange} value={formFields.favourite_album} />
+                  </Form.Group>
 
-                <label htmlFor='favourite_album'>Favourite Album</label>
-                <input type='text' name='favourite_album' placeholder={info.favourite_album} onChange={handleChange} value={formFields.favourite_album} />
+                  <Form.Group className='mb-3'>
+                    <Form.Control type="text" name="favourite_genre" placeholder={info.favourite_genre} onChange={handleChange} value={formFields.favourite_genre} />
+                  </Form.Group>
 
-                <label htmlFor='favourite_genre'>Favourite Genre</label>
-                <input type='text' name='favourite_genre' placeholder={info.favourite_genre} onChange={handleChange} value={formFields.favourite_genre} />
+                  <Button variant='primary' type='submit' className='mb-3'>
+                    Update
+                  </Button>
 
-                <div className='btnCenter'>
-                  <button className='btn mb-4'>Submit</button>
+                  {error && <p className='text-danger text-center'>{error}</p>}
+
                 </div>
 
-                {error && <p className='text-danger text-center'>{error}</p>}
-
-              </Col>
+              </Form>
             </Row>
           </Col>
         </Row>
