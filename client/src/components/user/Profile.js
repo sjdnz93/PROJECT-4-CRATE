@@ -174,12 +174,12 @@ const Profile = () => {
               <>
                 {profile.profile_image ? <img src={profile.profile_image} alt="profile picture" className='profile-pic'></img> : <img src='https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-default-male-avatar-png-image_2811083.jpg' alt="profile picture" className='profile-pic'></img>}
                 <div className='user-info'>
-                  <h2 className='username'>{profile.username}</h2>
+                  <h2 className='username text-wrap'>{profile.username}</h2>
                   {profile.collection ? <p>Records in crate: {profile.collection.length}</p> : <p>Records in crate: 0</p>}
                   {profile.favourite_album ? <p>Favourite album: {profile.favourite_album}</p> : <p>Favourite album: not selected yet</p>}
                   {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
                   <button className='toggle-button' onClick={toggleRecordView}>Show wishlist</button>
-                  <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : ''}>{followButtonVal}</button>
+                  <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : 'toggle-button'}>{followButtonVal}</button>
                   <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
                 </div>
               </>
@@ -199,7 +199,9 @@ const Profile = () => {
                     )
                   })
                 ) : (
-                  <p>Find users to follow <Link to={'/search-users'}>here</Link></p>
+                  <>
+                    {sub === profile.id ? <p>Find users to follow <Link to={'/search-users'}>here</Link></p> : <p>{profile.username} is not following anyone</p>}
+                  </>
                 )}
               </Row>
             </div>
@@ -237,11 +239,11 @@ const Profile = () => {
                     </>
                 }
               </Row>
-              
+
             </div>
             <div className='buffer'></div>
           </Col>
-          
+
           <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block right'>
             {recordView ? <h4>Your record collection:</h4> : <h4>Your record wishlist:</h4>}
             <Row className='content-slider-vert'>

@@ -15,5 +15,5 @@ class Review(models.Model):
         related_name='reviews',
         default=1
     )
-    review_text = models.CharField(default=0, max_length=250)
+    review_text = models.CharField(default=0, max_length=25)
     rating = models.IntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(1)])

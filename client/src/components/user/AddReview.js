@@ -7,6 +7,8 @@ import humps from 'humps'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
 
 const AddReview = () => {
@@ -67,54 +69,50 @@ const AddReview = () => {
 
   return (
     <main>
-      <Container>
-        <Row>
+      <Container className='primary-container'>
+        <Row className='top-row'>
 
-          <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block' >
-            <h1>ADD ALBUM REVIEW</h1>
-            <div className='record-image desktop-image' style={{ backgroundImage: `url('${record.album_art}')` }}></div>
+          <Col xs={0} sm={0} md={0} lg={6} className='d-none d-md-block left' >
+            <div className='desktop-img'>
+              <img src={record.album_art}></img>
+            </div>
           </Col>
 
-          <Col xs={12} sm={12} md={6} lg={6}>
-            <Row>
-              <Col xs={12} sm={12} className='d-md-none'>
+          <Col xs={12} sm={12} md={6} lg={6} className='right-review'>
+            <Row className='mobile-review-container'>
+              <Col xs={12} sm={12} className='d-md-none mobile-album-review'>
                 <h1>ADD ALBUM REVIEW</h1>
-                <div className='record-image desktop-image' style={{ backgroundImage: `url('${record.album_art}')` }}></div>
+                <img className='d-md-none mobile-album-pic' src={record.album_art} alt='album cover'></img>
               </Col>
             </Row>
 
-            <Row>
-              <Col as='form' onSubmit={handleSubmit}>
+            <Row className='review-content'>
 
-                <h2>REVIEW INFO</h2>
+              <Form onSubmit={handleSubmit} className='review' >
+                <div className='form-container '>
+                  <h2>Review Info</h2>
+                  <Form.Group className='mb-3'>
+                    <Form.Control type="text" name='reviewText' placeholder='Review text' onChange={handleChange} value={formFields.reviewText} />
+                  </Form.Group>
 
-                <label htmlFor='reviewText'>Review</label>
-                <input type='textarea' name='reviewText' placeholder='Enter your review' onChange={handleChange} value={formFields.reviewText} />
+                  <Form.Group className='mb-3'>
+                    <Form.Control type="number" name="rating" placeholder='Rating out of 5' onChange={handleChange} value={formFields.rating} />
+                  </Form.Group>
 
-                <label htmlFor='rating'>Artist</label>
-                <input type='number' name='rating' placeholder='Score' onChange={handleChange} value={formFields.rating} />
+                  <Button variant='primary' type='submit' className='mb-3'>
+                    Register
+                  </Button>
 
-                <div className='btnCenter'>
-                  <button className='btn mb-4'>Submit</button>
+                  {error && <p className='text-danger text-center'>{error}</p>}
+
                 </div>
 
-                {error && <p className='text-danger text-center'>{error}</p>}
+              </Form>
 
-              </Col>
             </Row>
-
+            <div className='buffer'></div>
 
           </Col>
-
-
-
-
-
-
-
-
-
-
 
         </Row>
 

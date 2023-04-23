@@ -67,10 +67,10 @@ const SearchMusic = () => {
       <Container>
         <Row>
           <Col className='text-center'>
-            <h1>CRATE DIGGING</h1>
-            <h3>Use the search bar below to find music to add to your collection.</h3>
-            <Link to={'/add-record'}>Can&apos;t find the album you&apos;re looking for? Click here to add it to the CRATE database.</Link>
-            <div>
+            <h1 className='search-h1'>CRATE DIGGING</h1>
+            <h3 className='search-h3'>Use the search bar below to find music to add to your collection.</h3>
+            <Link className='search-link' to={'/add-record'}>Can&apos;t find the album you&apos;re looking for? Click here to add it to the CRATE database.</Link>
+            <div className='search-field-wrapper'>
               <h2>SEARCH</h2>
               <input type='text' name='album' placeholder='Album title' onChange={handleChange} value={filters} />
             </div>
@@ -81,10 +81,10 @@ const SearchMusic = () => {
             filteredRecords.map(record => {
               const { id, album_art, album } = record
               return (
-                <Col key={id} lg={2} md={2} sm={4} xs={4} className='record'>
+                <Col key={id} lg={2} md={2} sm={4} xs={4} className='album-container'>
                   <Link to={`/record/${id}`}>
-                    <Card>
-                      <div className='card-image' style={{ backgroundImage: `url('${album_art}')` }}></div>
+                    <Card className='album-card'>
+                      <Card.Img variant='top' src={album_art}></Card.Img>
                     </Card>
                   </Link>
                 </Col>

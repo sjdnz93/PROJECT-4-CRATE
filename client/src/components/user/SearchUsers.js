@@ -69,9 +69,9 @@ const SearchUsers = () => {
       <Container>
         <Row>
           <Col className='text-center'>
-            <h1>FIND NEW MUSIC FANS TO FOLLOW</h1>
-            <h3>Use the search bar below to find your friends.</h3>
-            <div>
+            <h1 className='search-h1'>FIND NEW MUSIC FANS TO FOLLOW</h1>
+            <h3 className='search-h3'>Use the search bar below to find your friends.</h3>
+            <div className='search-field-wrapper'>
               <h2>SEARCH</h2>
               <input type='text' name='user' placeholder='Username' onChange={handleChange} value={filters} />
             </div>
@@ -82,10 +82,10 @@ const SearchUsers = () => {
             filteredUsers.map(user => {
               const { id, profile_image, username, collection } = user
               return (
-                <Col key={id} lg={2} md={2} sm={4} xs={4} className={sub === id ? 'd-none' : 'record'}>
+                <Col key={id} lg={2} md={2} sm={4} xs={4} className={sub === id ? 'd-none' : ''}>
                   <Link to={`/profile/${id}`}>
-                    <Card>
-                      <div className='card-image' style={{ backgroundImage: `url('${profile_image}')` }}></div>
+                    <Card className='user-container'>
+                      <Card.Img className='card-image' style={{ backgroundImage: `url('${profile_image}')` }}></Card.Img>
                       <Card.Body>
                         <Card.Title>{username}</Card.Title>
                         <Card.Text>Records in crate: {collection.length}</Card.Text>

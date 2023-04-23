@@ -76,61 +76,57 @@ const RecordPage = () => {
 
   return (
     <main>
-      <Container>
-        <Row>
+      <Container className='primary-container'>
+        <Row className='top-row'>
 
-          <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block' >
-            <div className='record-image desktop-image' style={{ backgroundImage: `url('${record.album_art}')` }}></div>
+          <Col xs={0} sm={0} md={0} lg={6} className='d-none d-md-block left' >
+            <div className='desktop-img'>
+              <img src={record.album_art}></img>
+            </div>
           </Col>
 
-          <Col xs={12} sm={12} md={6} lg={6}>
-            <Row>
-              <Col xs={12} sm={12} className='d-md-none'>
-                <div className='record-image desktop-image' style={{ backgroundImage: `url('${record.album_art}')` }}></div>
-              </Col>
+          <Col xs={12} sm={12} md={6} lg={6} className='right'>
+            <Row >
+              <>
+                <Col className='record-info'>
+                  <img className='d-md-none mobile-album' src={record.album_art} alt='album cover'></img>
+                  <h1>{record.album}</h1>
+                  <h2>{record.artist}</h2>
+                  <p>Released: {record.release_year}</p>
+                  <p>Genre: {record.genre}</p>
+                  <p>Insert avg. rating</p>
+                  <button className='toggle-button' onClick={addToCollection}>Add record to your collection</button>
+                  <button className='toggle-button' onClick={addToWishlist}>Add record to your wishlist</button>
+                  <Link className='toggle-button' to={`/add-review/${recordId}/${sub}`}>Submit album review</Link>
+                </Col>
+              </>
             </Row>
 
             <Row>
-              <Col>
-                <h1>{record.album}</h1>
-                <h2>{record.artist}</h2>
-                <p>Released: {record.release_year}</p>
-                <p>Genre: {record.genre}</p>
-                <p>Insert avg. rating</p>
-                <button onClick={addToCollection}>Add record to your collection</button>
-                <button onClick={addToWishlist}>Add record to your wishlist</button>
-                <Link to={`/add-review/${recordId}/${sub}`}>Submit album review</Link>
-              </Col>
-            </Row>
-
-            <Row>
-              <h2>REVIEWS</h2>
-              {record.reviews ?
-                record.reviews.map(review => {
-                  const { id, review_text, rating, owner } = review
-                  if (review) {
-                    return (
-                      <div key={id}>
-                        <p><Link to={`/profile/${owner.id}`}>{owner.username}</Link></p>
-                        <p>{review_text}</p>
-                        <p>{rating}</p>
-                      </div>
-                    )
-                  } else {
-                    return (
-                      <div key={0}>
-                        <p>No reviews for this album. Click the link to add one.</p>
-                      </div>
-                    )
-                  }
-
-                })
-                :
-                <>
+              <>
+                <Col className='review-info slider'>
                   <h2>REVIEWS</h2>
-                  <p>No reviews for this album. Click the link to add one.</p>
-                </>
-              }
+                  {record.reviews && record.reviews.length > 0 ?
+                    record.reviews.map(review => {
+                      const { id, review_text, rating, owner } = review
+                      if (review) {
+                        return (
+                          <div key={id} className='review-container'>
+                            <p className='review-content'><Link to={`/profile/${owner.id}`}>{owner.username}</Link></p>
+                            <p className='review-content'>{review_text}</p>
+                            <p className='review-content'>Rating: {rating}/5</p>
+                          </div>
+                        )
+                      } 
+                    })
+                    :
+                    <>
+                      <p>No reviews for this album. Click the link to add one.</p>
+                    </>
+                  }
+                </Col>
+              </>
+              <div className='buffer'></div>
             </Row>
           </Col>
         </Row>
