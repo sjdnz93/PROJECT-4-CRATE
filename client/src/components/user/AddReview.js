@@ -100,7 +100,7 @@ const AddReview = () => {
                   </Form.Group>
 
                   <Button variant='primary' type='submit' className='mb-3'>
-                    Register
+                    Submit review
                   </Button>
 
                   {error && <p className='text-danger text-center'>{error}</p>}
