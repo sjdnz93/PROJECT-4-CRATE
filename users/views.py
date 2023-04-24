@@ -77,6 +77,13 @@ class ProfileView(APIView):
         serialized_user.save()
         return Response(serialized_user.data)
     
+    @exceptions
+    def delete(self, request, id):
+        user = User.objects.get(id=id)
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    
 class AllProfiles(APIView):
     
     @exceptions

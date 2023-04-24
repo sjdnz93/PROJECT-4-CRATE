@@ -64,12 +64,6 @@ const AddRecord = () => {
           </Col>
 
           <Col xs={12} sm={12} md={6} lg={6} className='right-add-record'>
-            {/* <Row>
-              <Col className='title-container'>
-                <h1 className='display-4 text-center'>ADD RECORD</h1>
-                <p className='text-center'>Can&apos;t find the record you&apos;re looking for? Enter the album&apos;s info into the form to add it to the CRATE database.</p>
-              </Col>
-            </Row> */}
 
             <Row>
 

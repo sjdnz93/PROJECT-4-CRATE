@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -9,13 +9,16 @@ import Card from 'react-bootstrap/Card'
 
 import Error from '../error/Error'
 
-import { getPayloadSub } from '../helpers/Auth'
+import { getPayloadSub, removeToken } from '../helpers/Auth'
+
 
 const Profile = () => {
 
   const { id } = useParams()
 
   const sub = getPayloadSub()
+
+  const navigate = useNavigate()
 
   const [profile, setProfile] = useState({})
 
@@ -162,6 +165,29 @@ const Profile = () => {
     }
   }
 
+  const handleLogOut = () => {
+    removeToken()
+    navigate('/')
+  }
+
+  const deleteAccount = async () => {
+
+    if (window.confirm('Are you sure you want to delete your account?')) {
+      try {
+        console.log('Confirmed')
+        await axios.delete(`/api/profile/${id}/`)
+        handleLogOut()
+
+      } catch (err) {
+        console.log(err)
+        setError(err.message)
+      }
+    }
+
+
+
+  }
+
 
   return (
 
@@ -181,6 +207,7 @@ const Profile = () => {
                   <button className='toggle-button' onClick={toggleRecordView}>Show wishlist</button>
                   <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : 'toggle-button'}>{followButtonVal}</button>
                   <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
+                  <button className={sub !== profile.id ? 'd-none' : 'toggle-button delete'} onClick={deleteAccount}>Delete account</button>
                 </div>
               </>
             </Row>
