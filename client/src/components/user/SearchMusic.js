@@ -95,7 +95,7 @@ const SearchMusic = () => {
               {error ?
                 <Error error={error} />
                 :
-                <h1>Loading</h1>
+                <h1>No match found</h1>
               }
             </>
           }

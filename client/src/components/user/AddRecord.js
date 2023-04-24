@@ -109,53 +109,7 @@ const AddRecord = () => {
 
 
       </Container>
-      {/* <Container className='primary-container'>
-        <Row className='top-row'>
-
-          <Col xs={0} sm={0} md={6} lg={6} className='d-none d-md-block'>
-            <h1 className='display-4 text-center'>ADD RECORD</h1>
-            <p className='text-center'>Can&apos;t find the record you&apos;re looking for? Enter the album&apos;s info into the form to add it to the CRATE database.</p>
-          </Col>
-
-          <Col xs={12} sm={12} md={6} lg={6}>
-            <Row>
-              <Col xs={12} sm={12} className='d-md-none'>
-                <h1 className='display-4 text-center'>ADD RECORD</h1>
-                <p className='text-center'>Can&apos;t find the record you&apos;re looking for? Enter the album&apos;s info into the form to add it to the CRATE database..</p>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col as='form' onSubmit={handleSubmit}>
-
-                <h2>ALBUM INFO</h2>
-
-                <label htmlFor='album'>Album</label>
-                <input type='text' name='album' placeholder='Album' onChange={handleChange} value={formFields.album} />
-
-                <label htmlFor='artist'>Artist</label>
-                <input type='text' name='artist' placeholder='Artist' onChange={handleChange} value={formFields.artist} />
-
-                <label htmlFor='genre'>Genre</label>
-                <input type='text' name='genre' placeholder='Genre' onChange={handleChange} value={formFields.genre} />
-
-                <label htmlFor='releaseYear'>Release Year</label>
-                <input type='text' name='releaseYear' placeholder='Release Year' onChange={handleChange} value={formFields.releaseYear} />
-
-                <label htmlFor='albumArt'>Album Art</label>
-                <input type='text' name='albumArt' placeholder='Album Art (insert image URL)' onChange={handleChange} value={formFields.albumArt} />
-
-                <div className='btnCenter'>
-                  <button className='btn mb-4'>Submit</button>
-                </div>
-
-                {error && <p className='text-danger text-center'>{error}</p>}
-
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container> */}
+      
     </main>
   )
 }

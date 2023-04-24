@@ -206,7 +206,7 @@ const Profile = () => {
                   {profile.favourite_genre ? <p>Favourite genre: {profile.favourite_genre}</p> : <p>Favourite genre: not selected yet</p>}
                   <button className='toggle-button' onClick={toggleRecordView}>Show wishlist</button>
                   <button onClick={followUnfollow} className={sub === profile.id ? 'd-none' : 'toggle-button'}>{followButtonVal}</button>
-                  <Link to={`/profile/${id}/edit`} state={{ info: profile }}>Edit profile</Link>
+                  <Link to={`/profile/${id}/edit`} state={{ info: profile }} className={sub !== profile.id ? 'd-none' : 'toggle-button'}>Edit profile</Link>
                   <button className={sub !== profile.id ? 'd-none' : 'toggle-button delete'} onClick={deleteAccount}>Delete account</button>
                 </div>
               </>
