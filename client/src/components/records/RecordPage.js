@@ -25,7 +25,7 @@ const RecordPage = () => {
   useEffect(() => {
     const getRecord = async () => {
       try {
-        const { data } = await axios.get(`/api/records/${recordId}`)
+        const { data } = await axios.get(`/api/records/${recordId}/`)
         console.log('RECORD DATA', data)
         setRecord(data)
       } catch (err) {
@@ -41,7 +41,7 @@ const RecordPage = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const { data } = await axios.get(`/api/profile/${sub}`)
+        const { data } = await axios.get(`/api/profile/${sub}/`)
         console.log('USER DATA', data)
         setUser(data)
       } catch (err) {

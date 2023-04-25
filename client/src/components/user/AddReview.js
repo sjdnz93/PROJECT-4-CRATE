@@ -38,7 +38,7 @@ const AddReview = () => {
   useEffect(() => {
     const getRecord = async () => {
       try {
-        const { data } = await axios.get(`/api/records/${recordId}`)
+        const { data } = await axios.get(`/api/records/${recordId}/`)
         console.log('RECORD DATA', data)
         setRecord(data)
       } catch (err) {

@@ -37,7 +37,7 @@ const Profile = () => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        const { data } = await axios.get(`/api/profile/${id}`)
+        const { data } = await axios.get(`/api/profile/${id}/`)
         console.log('USER DATA', data)
         setProfile(data)
       } catch (err) {
@@ -52,7 +52,7 @@ const Profile = () => {
   useEffect(() => {
     const getLoggedUser = async () => {
       try {
-        const { data } = await axios.get(`/api/profile/${sub}`)
+        const { data } = await axios.get(`/api/profile/${sub}/`)
         console.log('LOGGED USER DATA', data)
         setLoggedUser(data)
       } catch (err) {
@@ -67,9 +67,9 @@ const Profile = () => {
     const buttonVal = async () => {
 
       try {
-        const data1 = await axios.get(`/api/profile/${sub}`)
+        const data1 = await axios.get(`/api/profile/${sub}/`)
         setButtonUserData(data1.data)
-        const data2 = await axios.get(`/api/profile/${id}`)
+        const data2 = await axios.get(`/api/profile/${id}/`)
 
         setButtonAccountData(data2.data)
 
@@ -142,7 +142,7 @@ const Profile = () => {
     if (master.includes(otherId) === true) {
       try {
         await axios.put(`/api/profile/${sub}/unfollow/${profile.id}/`)
-        const { data } = await axios.get(`/api/profile/${sub}`)
+        const { data } = await axios.get(`/api/profile/${sub}/`)
         console.log('LOGGED USER DATA', data)
         setLoggedUser(data)
         setFollowButtonVal('Follow this user')
@@ -153,7 +153,7 @@ const Profile = () => {
     } else {
       try {
         await axios.put(`/api/profile/${sub}/follow/${profile.id}/`)
-        const { data } = await axios.get(`/api/profile/${sub}`)
+        const { data } = await axios.get(`/api/profile/${sub}/`)
         console.log('LOGGED USER DATA', data)
         setLoggedUser(data)
         setFollowButtonVal('Unfollow this user')
