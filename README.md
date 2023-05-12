@@ -12,13 +12,13 @@ This was the first project on the course where we would be building a Django API
 ## Deployment link
 My project can be found at the following link:
 
-<a href='https://crate.herokuapp.com/' target='_blank' rel='noreferrer'>CRATE</a>
+<a href='https://crate.herokuapp.com/'>CRATE</a>
 
 Login: test@email.com
 Password: passpass123
 
 ## Code installation
-* Fork code from <a href='https://github.com/sjdnz93/project-4-crate' target='_blank' rel='noreferrer'>GitHub repository</a>
+* Fork code from <a href='https://github.com/sjdnz93/project-4-crate'>GitHub repository</a>
 
 **In the project root folder:**
 * Install back-end dependencies: ```pipenv install```
